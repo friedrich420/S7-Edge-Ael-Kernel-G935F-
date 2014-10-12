@@ -13,7 +13,13 @@
 #include <linux/gfp.h>
 #include <linux/smp.h>
 #include <linux/cpu.h>
+<<<<<<< HEAD
 #include <linux/sched.h>
+=======
+#define CREATE_TRACE_POINTS
+#include <trace/events/smp.h>
+#include <asm/relaxed.h>
+>>>>>>> ea5ac48... Enhance power efficiency: Series of patches from NVIDIA on some critical blocking code paths to allow the CPU to relax instead of busy spinning thus lowering the load_average and lowering power consumption.
 
 #include "smpboot.h"
 
@@ -107,8 +113,8 @@ void __init call_function_init(void)
  */
 static void csd_lock_wait(struct call_single_data *csd)
 {
-	while (csd->flags & CSD_FLAG_LOCK)
-		cpu_relax();
+	while (cpu_relaxed_read_short(&csd->flags) & CSD_FLAG_LOCK)
+		cpu_read_relax();
 }
 
 static void csd_lock(struct call_single_data *csd)
