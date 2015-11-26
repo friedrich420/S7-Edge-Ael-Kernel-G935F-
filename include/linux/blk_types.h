@@ -181,7 +181,7 @@ enum rq_flag_bits {
 				 * throttling rules. Don't do it again. */
 
 	/* request only flags */
-	__REQ_SORTED,		/* elevator knows about this request */
+	__REQ_SORTED = __REQ_RAHEAD,		/* elevator knows about this request */
 	__REQ_SOFTBARRIER,	/* may not be passed by ioscheduler */
 	__REQ_NOMERGE,		/* don't touch this for merging */
 	__REQ_STARTED,		/* drive already may have started this one */
@@ -198,12 +198,14 @@ enum rq_flag_bits {
 	__REQ_FLUSH_SEQ,	/* request for flush sequence */
 	__REQ_IO_STAT,		/* account I/O stat */
 	__REQ_MIXED_MERGE,	/* merge of different types, fail separately */
+	__REQ_URGENT,    	/* urgent request */
 	__REQ_PM,		/* runtime pm request */
 	__REQ_HASHED,		/* on IO scheduler merge hash */
 	__REQ_MQ_INFLIGHT,	/* track inflight for MQ */
 	__REQ_NR_BITS,		/* stops here */
 };
 
+<<<<<<< HEAD
 #define REQ_WRITE		(1ULL << __REQ_WRITE)
 #define REQ_FAILFAST_DEV	(1ULL << __REQ_FAILFAST_DEV)
 #define REQ_FAILFAST_TRANSPORT	(1ULL << __REQ_FAILFAST_TRANSPORT)
@@ -215,6 +217,19 @@ enum rq_flag_bits {
 #define REQ_WRITE_SAME		(1ULL << __REQ_WRITE_SAME)
 #define REQ_NOIDLE		(1ULL << __REQ_NOIDLE)
 #define REQ_INTEGRITY		(1ULL << __REQ_INTEGRITY)
+=======
+#define REQ_WRITE		(1 << __REQ_WRITE)
+#define REQ_FAILFAST_DEV	(1 << __REQ_FAILFAST_DEV)
+#define REQ_FAILFAST_TRANSPORT	(1 << __REQ_FAILFAST_TRANSPORT)
+#define REQ_FAILFAST_DRIVER	(1 << __REQ_FAILFAST_DRIVER)
+#define REQ_SYNC		(1 << __REQ_SYNC)
+#define REQ_META		(1 << __REQ_META)
+#define REQ_PRIO		(1 << __REQ_PRIO)
+#define REQ_DISCARD		(1 << __REQ_DISCARD)
+#define REQ_URGENT    		(1 << __REQ_URGENT)
+#define REQ_WRITE_SAME		(1 << __REQ_WRITE_SAME)
+#define REQ_NOIDLE		(1 << __REQ_NOIDLE)
+>>>>>>> eaf5033... block: Adding ROW scheduling algorithm
 
 #define REQ_FAILFAST_MASK \
 	(REQ_FAILFAST_DEV | REQ_FAILFAST_TRANSPORT | REQ_FAILFAST_DRIVER)
