@@ -536,8 +536,13 @@ static ssize_t set_gpu_custom_max_clock(struct device *dev, struct device_attrib
 		return -ENOENT;
 	}
 
+<<<<<<< HEAD
 	if ((gpu_max_clock < 100) || (gpu_max_clock > 700)) {
 		GPU_LOG(DVFS_WARNING, DUMMY, 0u, 0u, "%s: out of range [100~700] (%d)\n", __func__, gpu_max_clock);
+=======
+	if ((gpu_max_clock < platform->gpu_min_clock_limit) || (gpu_max_clock > platform->gpu_max_clock_limit)) {
+		GPU_LOG(DVFS_WARNING, DUMMY, 0u, 0u, "%s: out of range (%d)\n", __func__, gpu_max_clock);
+>>>>>>> aa60773... GPU-MALI: make clock control limits to dynamically values
 		return -ENOENT;
 	}
 
@@ -582,8 +587,13 @@ static ssize_t set_gpu_custom_min_clock(struct device *dev, struct device_attrib
 		return -ENOENT;
 	}
 
+<<<<<<< HEAD
 	if ((gpu_min_clock < 100) || (gpu_min_clock > 700)) {
 		GPU_LOG(DVFS_WARNING, DUMMY, 0u, 0u, "%s: out of range [100~700] (%d)\n", __func__, gpu_min_clock);
+=======
+	if ((gpu_min_clock < platform->gpu_min_clock_limit) || (gpu_min_clock > platform->gpu_max_clock_limit)) {
+		GPU_LOG(DVFS_WARNING, DUMMY, 0u, 0u, "%s: out of range (%d)\n", __func__, gpu_min_clock);
+>>>>>>> aa60773... GPU-MALI: make clock control limits to dynamically values
 		return -ENOENT;
 	}
 
