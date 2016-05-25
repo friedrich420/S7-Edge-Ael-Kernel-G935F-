@@ -23,6 +23,7 @@
 *.symtypes
 *.order
 modules.builtin
+*.elf
 *.bin
 *.gz
 *.bz2
@@ -37,9 +38,6 @@ modules.builtin
 *.dtb
 *.rej
 *.orig
-*.zip
-*.tar
-*.tar.md5
 *zImage
 *zImage-dtb
 *boot.img
@@ -53,7 +51,6 @@ scripts/recordmcount
 kernel/usr/*
 kernel/hz.bc
 Package/*
-output/
 
 #
 # Top-level generic files
@@ -113,3 +110,8 @@ extra_certificates
 signing_key.priv
 signing_key.x509
 x509.genkey
+
+*/zImage*
+*/zImage
+*/Image*
+*/Image
