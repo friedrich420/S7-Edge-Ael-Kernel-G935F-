@@ -411,8 +411,8 @@ LINUXINCLUDE    := \
 KBUILD_CPPFLAGS := -D__KERNEL__
 
 KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
-		   -fno-strict-aliasing -fno-common \
-		   -Werror-implicit-function-declaration \
+		   -fno-strict-aliasing -fno-common -Wno-unused-value -Wno-maybe-uninitialized \
+		   -Werror-implicit-function-declaration -Wno-uninitialized \
 		   -Werror -Wno-error=unused-variable -Wno-error=unused-function \
 		   -Wno-discarded-array-qualifiers -Wno-logical-not-parentheses -Wno-array-bounds -Wno-switch -Wno-unused-variable \
 		   -Wno-switch-bool \
