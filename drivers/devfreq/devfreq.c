@@ -1089,7 +1089,7 @@ static ssize_t time_in_state_show(struct device *dev,
 	}
 	return len;
 }
-
+<<<<<<< HEAD
 static DEVICE_ATTR_RO(time_in_state);
 
 static struct attribute *devfreq_attrs[] = {
@@ -1104,6 +1104,7 @@ static struct attribute *devfreq_attrs[] = {
 	&dev_attr_trans_stat.attr,
 	&dev_attr_time_in_state.attr,
 	NULL,
+=======
 
 
 static ssize_t store_volt_table(struct device *d, struct device_attribute *attr,
