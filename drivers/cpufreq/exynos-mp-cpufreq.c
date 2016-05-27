@@ -1665,8 +1665,7 @@ inline ssize_t store_core_freq(const char *buf, size_t count,
 	return count;
 }
 
-<<<<<<< HEAD
-=======
+
 static size_t get_freq_table_size(struct cpufreq_frequency_table *freq_table)
 {
 	size_t tbl_sz = 0;
@@ -1829,8 +1828,7 @@ static ssize_t store_cluster0_max_freq(struct kobject *kobj, struct attribute *a
 	return store_core_freq(buf, count, CL_ZERO, true);
 }
 
-<<<<<<< HEAD
-=======
+
 static ssize_t show_cluster0_volt_table(struct kobject *kobj,
 				struct attribute *attr, char *buf)
 {
@@ -1843,7 +1841,6 @@ static ssize_t store_cluster0_volt_table(struct kobject *kobj, struct attribute 
 	return store_volt_table(kobj, attr, buf, count, CL_ZERO);
 }
 
->>>>>>> 8a666ed... cpufreq: exynos: Add Exynos MP voltage control [Andrei F]
 define_one_global_ro(cluster1_freq_table);
 define_one_global_rw(cluster1_min_freq);
 define_one_global_rw(cluster1_max_freq);
@@ -1851,10 +1848,7 @@ define_one_global_rw(cluster1_volt_table);
 define_one_global_ro(cluster0_freq_table);
 define_one_global_rw(cluster0_min_freq);
 define_one_global_rw(cluster0_max_freq);
-<<<<<<< HEAD
-=======
 define_one_global_rw(cluster0_volt_table);
->>>>>>> 8a666ed... cpufreq: exynos: Add Exynos MP voltage control [Andrei F]
 
 static struct attribute *mp_attributes[] = {
 	&cluster1_freq_table.attr,
@@ -1864,10 +1858,7 @@ static struct attribute *mp_attributes[] = {
 	&cluster0_freq_table.attr,
 	&cluster0_min_freq.attr,
 	&cluster0_max_freq.attr,
-<<<<<<< HEAD
-=======
 	&cluster0_volt_table.attr,
->>>>>>> 8a666ed... cpufreq: exynos: Add Exynos MP voltage control [Andrei F]
 	NULL
 };
 
