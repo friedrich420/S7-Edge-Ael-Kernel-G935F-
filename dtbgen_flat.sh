@@ -35,9 +35,9 @@ case $DEVICE in
 hero2lte)
 	case $VARIANT in
 	xx|duos)
-		DTSFILES="exynos8890-hero2lte_eur_open_00 exynos8890-hero2lte_eur_open_01
-				exynos8890-hero2lte_eur_open_03 exynos8890-hero2lte_eur_open_04 
-				exynos8890-hero2lte_eur_open_08"
+		DTSFILES="exynos8890-herolte_eur_open_00 exynos8890-herolte_eur_open_01
+				exynos8890-herolte_eur_open_02 exynos8890-herolte_eur_open_03 exynos8890-herolte_eur_open_04 
+				exynos8890-herolte_eur_open_08 exynos8890-herolte_eur_open_09"
 		;;
 	*)
 		echo "Unknown variant: $VARIANT"

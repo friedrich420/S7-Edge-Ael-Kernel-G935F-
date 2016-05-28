@@ -1,8 +1,8 @@
-# 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_eur_open_00.dts"
+# 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_eur_open_04.dts"
 # 1 "<built-in>"
 # 1 "<command-line>"
-# 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_eur_open_00.dts"
-# 12 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_eur_open_00.dts"
+# 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_eur_open_04.dts"
+# 12 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_eur_open_04.dts"
 /dts-v1/;
 # 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_common.dtsi" 1
 # 12 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_common.dtsi"
@@ -8257,20 +8257,11 @@
   };
  };
 };
-# 14 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_eur_open_00.dts" 2
-# 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_gpio_02.dtsi" 1
-# 12 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_gpio_02.dtsi"
+# 14 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_eur_open_04.dts" 2
+# 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_gpio_03.dtsi" 1
+# 12 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_gpio_03.dtsi"
 # 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos_gpio_config_macros.dtsi" 1
-# 13 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_gpio_02.dtsi" 2
-
-
-&pinctrl_0 {
- pinctrl-names = "default";
- pinctrl-0 = <&initial0>;
- initial0: initial-state {
-  gpa3-7 { samsung,pins = "gpa3-7"; samsung,pin-function = <0>; samsung,pin-pud = <0>; samsung,pin-drv = <0x0>; };
- };
-};
+# 13 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_gpio_03.dtsi" 2
 
 
 &pinctrl_1 {
@@ -8335,6 +8326,7 @@
  initial5: initial-state {
   gpi1-1 { samsung,pins = "gpi1-1"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
 
+  gpi2-1 { samsung,pins = "gpi2-1"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
   gpi2-5 { samsung,pins = "gpi2-5"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
  };
  sleep5: sleep-state {
@@ -8345,7 +8337,7 @@
 
   gpi2-0 { samsung,pins = "gpi2-0"; samsung,pin-con-pdn = <3>; samsung,pin-pud-pdn = <0>; };
   gpi2-1 { samsung,pins = "gpi2-1"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
-  gpi2-2 { samsung,pins = "gpi2-2"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
+  gpi2-2 { samsung,pins = "gpi2-2"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <0>; };
   gpi2-3 { samsung,pins = "gpi2-3"; samsung,pin-con-pdn = <3>; samsung,pin-pud-pdn = <0>; };
   gpi2-4 { samsung,pins = "gpi2-4"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
   gpi2-5 { samsung,pins = "gpi2-5"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
@@ -8356,8 +8348,12 @@
 
 
 &pinctrl_6 {
- pinctrl-names = "sleep";
- pinctrl-0 = <&sleep6>;
+ pinctrl-names = "default","sleep";
+ pinctrl-0 = <&initial6>;
+ pinctrl-1 = <&sleep6>;
+ initial6: initial-state {
+  gpj0-2 { samsung,pins = "gpj0-2"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
+ };
  sleep6: sleep-state {
   gpj0-2 { samsung,pins = "gpj0-2"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
  };
@@ -8384,25 +8380,33 @@
   gpi0-2 { samsung,pins = "gpi0-2"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
   gpi0-3 { samsung,pins = "gpi0-3"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
 
+  gpd0-0 { samsung,pins = "gpd0-0"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
+  gpd0-1 { samsung,pins = "gpd0-1"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
+  gpd0-2 { samsung,pins = "gpd0-2"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
+  gpd0-3 { samsung,pins = "gpd0-3"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
   gpd0-7 { samsung,pins = "gpd0-7"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
+
+  gpd3-0 { samsung,pins = "gpd3-0"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
+  gpd3-1 { samsung,pins = "gpd3-1"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
 
   gpb0-2 { samsung,pins = "gpb0-2"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
 
-  gpb1-0 { samsung,pins = "gpb1-0"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
-
   gpk0-3 { samsung,pins = "gpk0-3"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
+
+  etc1-1 { samsung,pins = "etc1-1"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
+  etc1-3 { samsung,pins = "etc1-3"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
  };
  sleep8: sleep-state {
   gpi0-0 { samsung,pins = "gpi0-0"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
-  gpi0-1 { samsung,pins = "gpi0-1"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
+  gpi0-1 { samsung,pins = "gpi0-1"; samsung,pin-con-pdn = <0>; samsung,pin-pud-pdn = <0>; };
   gpi0-2 { samsung,pins = "gpi0-2"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
   gpi0-3 { samsung,pins = "gpi0-3"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
   gpi0-4 { samsung,pins = "gpi0-4"; samsung,pin-con-pdn = <3>; samsung,pin-pud-pdn = <0>; };
   gpi0-5 { samsung,pins = "gpi0-5"; samsung,pin-con-pdn = <3>; samsung,pin-pud-pdn = <0>; };
 
-  gpd0-0 { samsung,pins = "gpd0-0"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <3>; };
-  gpd0-1 { samsung,pins = "gpd0-1"; samsung,pin-con-pdn = <3>; samsung,pin-pud-pdn = <0>; };
-  gpd0-2 { samsung,pins = "gpd0-2"; samsung,pin-con-pdn = <3>; samsung,pin-pud-pdn = <0>; };
+  gpd0-0 { samsung,pins = "gpd0-0"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
+  gpd0-1 { samsung,pins = "gpd0-1"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
+  gpd0-2 { samsung,pins = "gpd0-2"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
   gpd0-3 { samsung,pins = "gpd0-3"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
   gpd0-4 { samsung,pins = "gpd0-4"; samsung,pin-con-pdn = <3>; samsung,pin-pud-pdn = <0>; };
   gpd0-5 { samsung,pins = "gpd0-5"; samsung,pin-con-pdn = <0>; samsung,pin-pud-pdn = <0>; };
@@ -8421,8 +8425,8 @@
   gpd2-2 { samsung,pins = "gpd2-2"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <0>; };
   gpd2-3 { samsung,pins = "gpd2-3"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <0>; };
 
-  gpd3-0 { samsung,pins = "gpd3-0"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <0>; };
-  gpd3-1 { samsung,pins = "gpd3-1"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <0>; };
+  gpd3-0 { samsung,pins = "gpd3-0"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
+  gpd3-1 { samsung,pins = "gpd3-1"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
   gpd3-2 { samsung,pins = "gpd3-2"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <0>; };
   gpd3-3 { samsung,pins = "gpd3-3"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <0>; };
 
@@ -8485,16 +8489,15 @@
  pinctrl-0 = <&initial9>;
  pinctrl-1 = <&sleep9>;
  initial9: initial-state {
-  gpe0-6 { samsung,pins = "gpe0-6"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
-  gpe0-7 { samsung,pins = "gpe0-7"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
+  gpe0-4 { samsung,pins = "gpe0-4"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
 
-  gpe1-2 { samsung,pins = "gpe1-2"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
   gpe1-3 { samsung,pins = "gpe1-3"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
   gpe1-4 { samsung,pins = "gpe1-4"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
   gpe1-5 { samsung,pins = "gpe1-5"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
   gpe1-6 { samsung,pins = "gpe1-6"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
   gpe1-7 { samsung,pins = "gpe1-7"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
 
+  gpe3-1 { samsung,pins = "gpe3-1"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
   gpe3-4 { samsung,pins = "gpe3-4"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
   gpe3-5 { samsung,pins = "gpe3-5"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
   gpe3-6 { samsung,pins = "gpe3-6"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
@@ -8509,9 +8512,11 @@
   gpe4-6 { samsung,pins = "gpe4-6"; samsung,pin-function = <0>; samsung,pin-pud = <0>; samsung,pin-drv = <0x0>; };
   gpe4-7 { samsung,pins = "gpe4-7"; samsung,pin-function = <0>; samsung,pin-pud = <0>; samsung,pin-drv = <0x0>; };
 
+  gpe6-0 { samsung,pins = "gpe6-0"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
+  gpe6-1 { samsung,pins = "gpe6-1"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
+  gpe6-2 { samsung,pins = "gpe6-2"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
+  gpe6-3 { samsung,pins = "gpe6-3"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
   gpe6-7 { samsung,pins = "gpe6-7"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
-
-
 
   gpj1-1 { samsung,pins = "gpj1-1"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
   gpj1-4 { samsung,pins = "gpj1-4"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
@@ -8529,7 +8534,7 @@
   gpe0-2 { samsung,pins = "gpe0-2"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <3>; };
   gpe0-3 { samsung,pins = "gpe0-3"; samsung,pin-con-pdn = <1>; samsung,pin-pud-pdn = <3>; };
   gpe0-4 { samsung,pins = "gpe0-4"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
-  gpe0-5 { samsung,pins = "gpe0-5"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
+  gpe0-5 { samsung,pins = "gpe0-5"; samsung,pin-con-pdn = <0>; samsung,pin-pud-pdn = <0>; };
   gpe0-6 { samsung,pins = "gpe0-6"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
   gpe0-7 { samsung,pins = "gpe0-7"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
 
@@ -8552,7 +8557,7 @@
   gpe2-7 { samsung,pins = "gpe2-7"; samsung,pin-con-pdn = <1>; samsung,pin-pud-pdn = <3>; };
 
   gpe3-0 { samsung,pins = "gpe3-0"; samsung,pin-con-pdn = <3>; samsung,pin-pud-pdn = <0>; };
-  gpe3-1 { samsung,pins = "gpe3-1"; samsung,pin-con-pdn = <3>; samsung,pin-pud-pdn = <0>; };
+  gpe3-1 { samsung,pins = "gpe3-1"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
   gpe3-2 { samsung,pins = "gpe3-2"; samsung,pin-con-pdn = <3>; samsung,pin-pud-pdn = <1>; };
   gpe3-3 { samsung,pins = "gpe3-3"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
   gpe3-4 { samsung,pins = "gpe3-4"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
@@ -8578,19 +8583,19 @@
   gpe5-6 { samsung,pins = "gpe5-6"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <0>; };
   gpe5-7 { samsung,pins = "gpe5-7"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <0>; };
 
-  gpe6-0 { samsung,pins = "gpe6-0"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <0>; };
-  gpe6-1 { samsung,pins = "gpe6-1"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <0>; };
-  gpe6-2 { samsung,pins = "gpe6-2"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <0>; };
-  gpe6-3 { samsung,pins = "gpe6-3"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <0>; };
+  gpe6-0 { samsung,pins = "gpe6-0"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
+  gpe6-1 { samsung,pins = "gpe6-1"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
+  gpe6-2 { samsung,pins = "gpe6-2"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
+  gpe6-3 { samsung,pins = "gpe6-3"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
   gpe6-4 { samsung,pins = "gpe6-4"; samsung,pin-con-pdn = <0>; samsung,pin-pud-pdn = <1>; };
   gpe6-5 { samsung,pins = "gpe6-5"; samsung,pin-con-pdn = <3>; samsung,pin-pud-pdn = <0>; };
   gpe6-6 { samsung,pins = "gpe6-6"; samsung,pin-con-pdn = <0>; samsung,pin-pud-pdn = <0>; };
-  gpe6-7 { samsung,pins = "gpe6-7"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <0>; };
+  gpe6-7 { samsung,pins = "gpe6-7"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
 
   gpe7-0 { samsung,pins = "gpe7-0"; samsung,pin-con-pdn = <0>; samsung,pin-pud-pdn = <1>; };
   gpe7-1 { samsung,pins = "gpe7-1"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
   gpe7-2 { samsung,pins = "gpe7-2"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
-
+  gpe7-3 { samsung,pins = "gpe7-3"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
 
   gpj1-0 { samsung,pins = "gpj1-0"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <0>; };
   gpj1-1 { samsung,pins = "gpj1-1"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
@@ -8624,11 +8629,11 @@
   gpf1-2 { samsung,pins = "gpf1-2"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
  };
 };
-# 15 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_eur_open_00.dts" 2
-# 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_battery_eur_00.dtsi" 1
-# 12 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_battery_eur_00.dtsi"
-# 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_battery.dtsi" 1
-# 12 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_battery.dtsi"
+# 15 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_eur_open_04.dts" 2
+# 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_battery_eur_04.dtsi" 1
+# 12 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_battery_eur_04.dtsi"
+# 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_battery.dtsi" 1
+# 12 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_battery.dtsi"
 / {
  pinctrl@10580000 {
   wpc_int: wpc-int {
@@ -8678,15 +8683,15 @@
 
    pinctrl-names = "default";
    pinctrl-0 = <&wpc_int &wpc_det &wcin_ok &wpc_en>;
+   battery,ftt_freq = <&gpe7 3 0>;
 
    battery,wpc_int = <&gpa3 2 0>;
    battery,wpc_det = <&gpa3 5 0>;
-   battery,ftt_freq = <&gpe7 3 0>;
 
    battery,charger_name = "max77854-charger";
    battery,wireless_charger_name = "p9220-charger";
-   battery,fod_data = <204 12 150 30 130 57 130 57 157 8 157 9>;
-   battery,fod_data_cv = <204 42 150 60 130 87 130 87 157 38 157 39>;
+   battery,fod_data = <194 15 133 48 174 240 150 17 160 251 158 251>;
+   battery,fod_data_cv = <194 45 133 78 174 14 150 47 160 25 158 25>;
    battery,wpc_cc_cv_vout = <5500>;
    battery,wpc_cv_call_vout = <5000>;
    battery,wpc_cc_call_vout = <5000>;
@@ -8722,25 +8727,19 @@
 
   battery,polling_time = <10 30 30 30 3600>;
 
-  battery,temp_table_adc = <261 307 398 467 547 642 754 828 879 934 1030 1127 1194 1265 1370 1484 1573 1657
-      1787 1922 2016 2253 2482 2706 2927 3007 3123 3228 3297 3361 3445 3585 3710>;
-  battery,temp_table_data = <900 850 800 750 700 650 600 570 550 530 500 470 450 430 400 370 350 330
-      300 270 250 200 150 100 50 30 0 (-30) (-50) (-70) (-100) (-150) (-200)>;
+  battery,temp_table_adc = <261 307 363 548 647 754 879 1040 1249 1390 1575 1798 2260 2738 2943 3130 3305 3445 3678>;
+  battery,temp_table_data = <900 850 800 700 650 600 550 500 450 400 350 300 200 100 50 0 (-50) (-100) (-200)>;
 
-  battery,chg_temp_table_adc = <368 433 509 600 708 779 829 879 972 1067 1132 1200 1301 1412 1501
-      1583 1710 1843 1937 2175 2408 2634 2856 2944 3066 3176 3249 3316 3407 3547 3672>;
-  battery,chg_temp_table_data = <800 750 700 650 600 570 550 530 500 470 450 430 400 370 350
-      330 300 270 250 200 150 100 50 30 0 (-30) (-50) (-70) (-100) (-150) (-200)>;
+  battery,chg_temp_table_adc = <369 519 616 721 843 999 1197 1348 1537 1757 2219 2695 2909 3099 3283 3439 3675>;
+  battery,chg_temp_table_data = <800 700 650 600 550 500 450 400 350 300 200 100 50 0 (-50) (-100) (-200)>;
 
-  battery,wpc_temp_table_adc = <368 433 509 601 708 779 829 880 972 1067 1132 1200 1301 1412 1501
-      1583 1710 1842 1937 2174 2407 2632 2855 2942 3060 3170 3244 3309 3401 3541 3666>;
-  battery,wpc_temp_table_data = <800 750 700 650 600 570 550 530 500 470 450 430 400 370 350
-      330 300 270 250 200 150 100 50 30 0 (-30) (-50) (-70) (-100) (-150) (-200)>;
+  battery,wpc_temp_table_adc = <370 519 615 721 843 998 1196 1347 1537 1758 2219 2696 2904 3084 3276 3430 3666>;
+  battery,wpc_temp_table_data = <800 700 650 600 550 500 450 400 350 300 200 100 50 0 (-50) (-100) (-200)>;
 
-  battery,input_current_limit = <1800 450 450 1800 500 900 1000 460 1000 450 900 900 900 1900 1800 450 450 400 700 1300 300 1000 1500 450 1675 1800 1000 1675 80 1800 1675 1400 1000 1000 600 900 900 900>;
-  battery,fast_charging_current = <2100 450 450 2100 800 1200 1000 460 1200 450 2100 2100 2100 1600 2100 450 450 400 700 1300 300 1000 1500 450 2800 2800 1000 2800 80 1800 1000 1400 450 1000 2100 2100 2100 2100>;
-  battery,full_check_current_1st = <350 0 0 350 350 350 350 350 350 0 350 350 350 350 350 0 0 350 350 350 350 350 350 0 350 350 350 350 0 350 350 350 0 350 350 350 350 350>;
-  battery,full_check_current_2nd = <150 0 0 150 150 150 150 150 150 0 150 150 150 150 150 0 0 150 150 150 150 150 150 0 150 150 150 150 0 150 150 150 0 150 150 150 150 150>;
+  battery,input_current_limit = <1800 450 450 1800 500 900 1000 460 1000 450 900 1000 900 1900 1800 450 450 400 700 1300 300 1000 1500 450 1675 1800 1000 1675 80 1800 1675 1400 1000 1000 600 900>;
+  battery,fast_charging_current = <2100 450 450 2100 800 1200 1000 460 1200 450 2100 2100 2100 1600 2100 450 450 400 700 1300 300 1000 1500 450 2800 2800 1000 2800 80 1800 1000 1400 450 1000 2100 2100>;
+  battery,full_check_current_1st = <300 0 0 300 300 300 300 300 300 0 300 300 300 300 300 0 0 300 300 300 300 300 300 0 300 300 300 300 0 300 300 300 0 300 300 300>;
+  battery,full_check_current_2nd = <150 0 0 150 150 150 150 150 150 0 150 150 150 150 150 0 0 150 150 150 150 150 150 0 150 150 150 150 0 150 150 150 0 150 150 150>;
 
   battery,wireless_cc_cv = <85>;
   battery,inbat_voltage = <1>;
@@ -8791,18 +8790,18 @@
   battery,chg_gpio_full_check = <0>;
   battery,chg_polarity_full_check = <1>;
 
-  battery,chg_high_temp_1st = <500>;
-  battery,chg_high_temp_2nd = <500>;
-  battery,chg_high_temp_recovery = <495>;
-  battery,chg_charging_limit_current = <1100>;
-  battery,chg_charging_limit_current_2nd = <1100>;
+  battery,chg_high_temp_1st = <515>;
+  battery,chg_high_temp_2nd = <515>;
+  battery,chg_high_temp_recovery = <500>;
+  battery,chg_charging_limit_current = <1033>;
+  battery,chg_charging_limit_current_2nd = <1033>;
   battery,chg_skip_check_capacity = <10>;
   battery,chg_skip_check_time = <600>;
 
-  battery,wpc_high_temp = <430>;
-  battery,wpc_high_temp_recovery = <429>;
-  battery,wpc_heat_temp_recovery = <360>;
-  battery,wpc_lcd_on_high_temp = <410>;
+  battery,wpc_high_temp = <450>;
+  battery,wpc_high_temp_recovery = <449>;
+  battery,wpc_heat_temp_recovery = <380>;
+  battery,wpc_lcd_on_high_temp = <430>;
   battery,wpc_lcd_on_high_temp_rec = <300>;
   battery,wpc_hv_lcd_on_input_limit_current = <400>;
   battery,wpc_charging_limit_current = <600>;
@@ -8838,10 +8837,10 @@
   battery,swelling_low_temp_block = <100>;
   battery,swelling_low_temp_recov = <150>;
 
-  battery,swelling_low_temp_current = <1800>;
-  battery,swelling_low_temp_topoff = <200>;
-  battery,swelling_high_temp_current = <2500>;
-  battery,swelling_high_temp_topoff = <200>;
+  battery,swelling_low_temp_current = <1500>;
+  battery,swelling_low_temp_topoff = <150>;
+  battery,swelling_high_temp_current = <2100>;
+  battery,swelling_high_temp_topoff = <150>;
 
   battery,swelling_drop_float_voltage = <42000>;
   battery,swelling_high_rechg_voltage = <4150>;
@@ -8896,189 +8895,133 @@
   fuelgauge,using_hw_vempty;
   fuelgauge,v_empty = <0xA561>;
   fuelgauge,v_empty_origin = <0x7D54>;
-  fuelgauge,qrtable20 = <0x0903>;
-  fuelgauge,qrtable30 = <0x0901>;
+  fuelgauge,qrtable20 = <0x0B00>;
+  fuelgauge,qrtable30 = <0x0A00>;
   fuelgauge,fg_resistor = <1>;
-  fuelgauge,rcomp0 = <0x80>;
-  fuelgauge,rcomp_charging = <0x80>;
+  fuelgauge,rcomp0 = <0x40>;
+  fuelgauge,rcomp_charging = <0x40>;
   fuelgauge,is_using_model_data;
   fuelgauge,type_str = "SDI";
-  fuelgauge,capacity = <0x1B5F>;
+  fuelgauge,capacity = <0x173B>;
 
   fuelgauge,discharge_temp_threshold = <600>;
   fuelgauge,discharge_volt_threshold = <4540>;
-  fuelgauge,cv_data = <
-   2488 829 1809
-   2409 832 1796
-   2327 837 1769
-   2272 840 1743
-   2182 846 1721
-   2104 850 1690
-   2038 854 1670
-   1950 859 1640
-   1904 861 1622
-   1838 865 1594
-   1797 867 1576
-   1749 870 1560
-   1703 873 1531
-   1683 873 1525
-   1667 875 1515
-   1660 875 1512
-   1653 876 1509
-   1615 878 1502
-   1580 880 1483
-   1553 881 1463
-   1544 882 1458
-   1520 883 1451
-   1477 886 1424
-   1431 888 1409
-   1396 891 1383
-   1347 894 1361
-   1299 896 1332
-   1267 898 1315
-   1231 902 1288
-   1202 904 1263
-   1148 906 1243
-   1109 909 1213
-   1067 911 1185
-   1031 914 1156
-   1013 915 1140
-   975 917 1111
-   961 919 1084
-   921 921 1064
-   892 923 1038
-   887 923 1019
-   863 925 1004
-   833 927 976
-   808 929 946
-   787 930 918
-   780 931 904
-   764 932 895
-   744 934 864
-   730 935 846
-   715 936 828
-   693 937 800
-   681 938 783
-   666 940 752
-   651 941 735
-   640 942 712
-   628 945 697
-   622 946 679
-   618 947 664
-   600 950 646
-   596 951 627
-   589 953 614
-   584 953 601
-   576 956 572
-   577 957 553
-   562 958 535
-   511 968 506
-   505 969 487
-   493 971 464
-   492 972 435
-   484 973 417
-   480 975 398
-   474 976 380
-   470 977 364
-   462 977 355
-   456 978 336
-   452 979 329
-   446 981 303
-   437 982 282
-   429 984 255
-   423 985 242
-   422 986 229
-   414 987 211
-   411 988 199
-   405 989 191
-   397 990 171
-   391 991 140
-   387 992 126
-   384 993 107
-   372 995 84
-   364 997 54
-   356 998 26
-   356 998 13
-   0 1000 0
-   >;
+  fuelgauge,cv_data = <2493 832 1437
+   2354 840 1405
+   2225 846 1373
+   2202 848 1367
+   2179 849 1360
+   2162 850 1355
+   2150 851 1351
+   2064 855 1327
+   1973 860 1301
+   1960 861 1297
+   1908 864 1281
+   1813 869 1249
+   1727 874 1219
+   1635 879 1186
+   1605 881 1175
+   1575 883 1163
+   1563 883 1158
+   1482 888 1126
+   1441 890 1109
+   1388 893 1086
+   1365 895 1075
+   1351 895 1068
+   1289 899 1040
+   1267 900 1030
+   1242 902 1017
+   1227 903 1009
+   1200 904 994
+   1138 908 963
+   1087 912 933
+   1085 912 931
+   1074 913 925
+   1018 916 891
+   988 917 874
+   957 920 852
+   939 920 840
+   924 922 828
+   871 924 796
+   834 927 764
+   818 928 752
+   807 928 744
+   800 929 738
+   795 929 733
+   778 930 718
+   771 931 710
+   739 933 683
+   730 933 675
+   721 934 669
+   715 934 661
+   714 934 660
+   699 935 645
+   695 936 641
+   679 936 628
+   672 937 622
+   650 938 596
+   625 940 566
+   613 941 556
+   606 941 545
+   594 942 533
+   591 943 531
+   585 944 523
+   581 945 518
+   576 946 514
+   569 947 505
+   567 948 503
+   565 948 499
+   564 948 495
+   559 949 487
+   535 954 456
+   532 955 453
+   523 956 441
+   515 958 430
+   506 960 418
+   486 964 387
+   469 967 362
+   468 967 359
+   462 968 349
+   454 970 334
+   435 973 302
+   434 974 300
+   428 975 291
+   422 976 280
+   407 979 248
+   406 979 247
+   404 979 244
+   389 982 218
+   386 983 213
+   375 985 188
+   368 986 175
+   355 989 143
+   338 992 111
+   337 993 103
+   331 994 88
+   319 996 56
+   310 998 39
+   307 998 32
+   0 1000 0>;
  };
+
 };
-# 13 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_battery_eur_00.dtsi" 2
+# 13 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_battery_eur_04.dtsi" 2
 / {
  pinctrl@10580000 {
-  da9155_irq: da9155-irq {
-   samsung,pins = "gpa3-7";
+  wpc_det: wpc-det {
+   samsung,pins = "gpa2-0";
    samsung,pin-function = <0xf>;
-   samsung,pin-pud = <0>;
-   samsung,pin-drv = <0>;
+   samsung,pin-pud = <1>;
   };
  };
 
- hsi2c@14E50000 {
-  status = "okay";
-
-  da9155-charger@58 {
-   status = "okay";
-   compatible = "dlg,da9155-charger";
-   pinctrl-names = "default";
-   pinctrl-0 = <&da9155_irq>;
-   reg = <0x58>;
-   da9155-charger,irq-gpio = <&gpa3 7 1>;
+ hsi2c@14E30000 {
+  p9220-charger@61 {
+   battery,wpc_det = <&gpa2 0 0>;
   };
- };
-
- battery {
-
-
-  battery,slave_chg_temp_check = <1>;
-  battery,slave_chg_temp_table_adc = <542 638 665 733 782 855 1000 1168 1237 1341 1530
-          1736 1949 2170 2378 2583 2801 2975 3081 3149 3284 3413 3504>;
-  battery,slave_chg_temp_table_data = <700 650 630 600 580 550 500 450 430 400 350
-         300 250 200 150 100 50 0 (-30) (-50) (-100) (-150) (-200)>;
-
-  battery,fast_charging_current = <1900 450 450 1900 800 1200 1000 460 1200 450 1900 1900 1900 1600 1900 450 450 400 700 1300 300 1000 1500 450 1900 1900 1000 1900 80 1800 1000 1400 450 1000 1900 1900 1900>;
-
-  io-channels = <&exynos_adc 1>, <&exynos_adc 3>, <&exynos_adc 6>, <&exynos_adc 3>, <&exynos_adc 5>;
-  io-channel-names = "adc-temp", "adc-chg-temp", "adc-in-bat", "adc-wpc-temp", "adc-slave-chg-temp";
- };
-
- max77854-fuelgauge {
-  fuelgauge,fg_resistor = <2>;
-  fuelgauge,qrtable20 = <0x2080>;
-  fuelgauge,qrtable30 = <0x1A03>;
-  fuelgauge,rcomp0 = <0x40>;
-  fuelgauge,rcomp_charging = <0x40>;
-  fuelgauge,capacity = <0x0EA8>;
- };
-
- sec-multi-charger {
-  status = "disable";
-  compatible = "samsung,sec-multi-charger";
-
-  charger,battery_name = "battery";
-  charger,main_charger = "max77854-charger";
-  charger,sub_charger = "da9155-charger";
-
-  charger,is_serial;
-
-  charger,sub_charger_condition = <0x13>;
-  charger,sub_charger_condition_current_max = <1200>;
-  charger,sub_charger_condition_current_now = <500>;
-  charger,sub_charger_condition_online = <3 24 26>;
-
-  charger,main_charger_temp_threshold = <1000>;
-  charger,main_charger_temp_step = <5>;
-  charger,main_charger_temp_drop_level = <2>;
-
-  charger,sub_charger_temp_threshold = <1000>;
-  charger,sub_charger_temp_step = <5>;
-  charger,sub_charger_temp_drop_level = <2>;
-
-  charger,main_charger_current_level = <100>;
-  charger,sub_charger_current_level = <100>;
  };
 };
-# 16 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_eur_open_00.dts" 2
+# 16 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_eur_open_04.dts" 2
 # 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-sound-cs47l91.dtsi" 1
 # 12 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-sound-cs47l91.dtsi"
 / {
@@ -9315,7 +9258,7 @@
  };
 
 };
-# 17 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_eur_open_00.dts" 2
+# 17 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_eur_open_04.dts" 2
 # 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-luckylte_mst.dtsi" 1
 # 13 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-luckylte_mst.dtsi"
 / {
@@ -9358,9 +9301,9 @@
   };
  };
 };
-# 18 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_eur_open_00.dts" 2
-# 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_fingerprint-sensor_00.dtsi" 1
-# 14 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_fingerprint-sensor_00.dtsi"
+# 18 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_eur_open_04.dts" 2
+# 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_fingerprint-sensor_03.dtsi" 1
+# 14 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_fingerprint-sensor_03.dtsi"
 / {
  pinctrl@10580000 {
   btp_irq: btp-irq {
@@ -9385,12 +9328,6 @@
  pinctrl@14CC0000 {
   btp_ldo: btp-ldo {
    samsung,pins = "gpe3-0";
-   samsung,pin-function = <1>;
-   samsung,pin-pud = <0>;
-   samsung,pin-drv = <0>;
-  };
-  btp_ldo2: btp-ldo2 {
-   samsung,pins = "gpe3-1";
    samsung,pin-function = <1>;
    samsung,pin-pud = <0>;
    samsung,pin-drv = <0>;
@@ -9437,7 +9374,7 @@
    reg = <0>;
    spi-max-frequency = <19200000>;
    pinctrl-names = "default", "sleep", "idle";
-   pinctrl-0 = <&btp_irq &btp_reset &btp_ldo &btp_ldo2 &btp_check>;
+   pinctrl-0 = <&btp_irq &btp_reset &btp_ldo &btp_check>;
    pinctrl-1 = <&btp_irqsleep>;
    pinctrl-2 = <&btp_irqidle>;
 
@@ -9447,7 +9384,6 @@
    vfsspi-sleepPin = <&gpi1 3 0x00>;
    vfsspi-drdyPin = <&gpa1 3 0x00>;
    vfsspi-ldoPin = <&gpe3 0 0x00>;
-   vfsspi-ldoPin2 = <&gpe3 1 0x00>;
    vfsspi-orient = <0>;
    vfsspi-vendorPin = <&gpe3 2 0x00>;
    vfsspi-ldocontrol = <1>;
@@ -9463,7 +9399,7 @@
    reg = <1>;
    spi-max-frequency = <16000000>;
    pinctrl-names = "default";
-   pinctrl-0 = <&btp_irq &btp_reset &btp_ldo &btp_ldo2>;
+   pinctrl-0 = <&btp_irq &btp_reset &btp_ldo>;
    pinctrl-1 = <&btp_irqsleep>;
    pinctrl-2 = <&btp_irqidle>;
 
@@ -9481,15 +9417,17 @@
   };
  };
 };
-# 19 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_eur_open_00.dts" 2
-# 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_display_00.dtsi" 1
-# 13 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_display_00.dtsi"
+# 19 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_eur_open_04.dts" 2
+# 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_display_02.dtsi" 1
+# 13 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_display_02.dtsi"
 / {
+
 
  decon_f: decon_f@0x13960000 {
 
   gpios = <&gpb0 0 0xf>;
   gpio_err = <&gpi2 5 0>;
+  gpio_pcd = <&gpe7 1 0>;
 
   te_eint {
 
@@ -9506,76 +9444,71 @@
   regulator_30V = "vdd_3p0_ddi";
   regulator_18V = "vdd_1p8_ddi";
  };
+
 };
-# 20 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_eur_open_00.dts" 2
-# 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_motor.dtsi" 1
-# 12 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_motor.dtsi"
+# 20 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_eur_open_04.dts" 2
+# 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_motor.dtsi" 1
+# 12 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_motor.dtsi"
 / {
  haptic {
   status = "okay";
   haptic,model = <1>;
   haptic,max_timeout = <10000>;
-  haptic,duty = <32850>;
-  haptic,period = <37820>;
+  haptic,duty = <32500>;
+  haptic,period = <37950>;
   haptic,reg2 = <0x82>;
   haptic,pwm_id = <1>;
   haptic,regulator_name = "VDD_MOT_3.3V";
  };
 };
-# 21 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_eur_open_00.dts" 2
-# 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_svcled.dtsi" 1
-# 12 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_svcled.dtsi"
+# 21 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_eur_open_04.dts" 2
+# 1 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_svcled.dtsi" 1
+# 12 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_svcled.dtsi"
 / {
  rgb {
-  device_type = <1>;
+  device_type = <0>;
   rgb-name = "led_w", "led_r", "led_g", "led_b";
 
   normal_powermode_current = <10>;
   low_powermode_current = <2>;
-  br_ratio_r = <100>;
-  br_ratio_g = <40>;
-  br_ratio_b = <210>;
+  br_ratio_r = <450>;
+  br_ratio_g = <70>;
+  br_ratio_b = <200>;
 
   normal_powermode_current_bk = <10>;
   low_powermode_current_bk = <2>;
-  br_ratio_r_bk = <210>;
-  br_ratio_g_bk = <70>;
-  br_ratio_b_bk = <370>;
+  br_ratio_r_bk = <320>;
+  br_ratio_g_bk = <50>;
+  br_ratio_b_bk = <170>;
 
   normal_powermode_current_wh = <10>;
   low_powermode_current_wh = <2>;
-  br_ratio_r_wh = <260>;
-  br_ratio_g_wh = <100>;
-  br_ratio_b_wh = <1100>;
+  br_ratio_r_wh = <150>;
+  br_ratio_g_wh = <40>;
+  br_ratio_b_wh = <250>;
 
   normal_powermode_current_gd = <10>;
   low_powermode_current_gd = <2>;
-  br_ratio_r_gd = <220>;
-  br_ratio_g_gd = <90>;
-  br_ratio_b_gd = <680>;
+  br_ratio_r_gd = <150>;
+  br_ratio_g_gd = <40>;
+  br_ratio_b_gd = <250>;
 
   normal_powermode_current_sv = <10>;
   low_powermode_current_sv = <2>;
-  br_ratio_r_sv = <320>;
-  br_ratio_g_sv = <120>;
-  br_ratio_b_sv = <340>;
-
-  normal_powermode_current_pg = <10>;
-  low_powermode_current_pg = <2>;
-  br_ratio_r_pg = <250>;
-  br_ratio_g_pg = <120>;
-  br_ratio_b_pg = <500>;
+  br_ratio_r_sv = <170>;
+  br_ratio_g_sv = <60>;
+  br_ratio_b_sv = <360>;
  };
 };
-# 22 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-hero2lte_eur_open_00.dts" 2
+# 22 "/home/friedrich420/kernel/s7/KernelPE9GIT/arch/arm64/boot/dts/exynos8890-herolte_eur_open_04.dts" 2
 
 / {
  model = "Samsung UNIVERSAL8890 board based on EXYNOS8890";
  model_info-chip = <8890>;
  model_info-platform = "android";
  model_info-subtype = "samsung";
- model_info-hw_rev = <0>;
- model_info-hw_rev_end = <0>;
+ model_info-hw_rev = <4>;
+ model_info-hw_rev_end = <7>;
  compatible = "samsung,exynos8890", "samsung,UNIVERSAL8890";
 
  audio_pdata {
@@ -9619,18 +9552,48 @@
   };
  };
 
+ hsi2c@10550000{
+  status = "okay";
+
+  s2mps16_pmic@66 {
+   regulators {
+    ldo32_reg: LDO32 {
+     regulator-name = "tsp_io";
+     regulator-min-microvolt = <1850000>;
+     regulator-max-microvolt = <1850000>;
+    };
+
+    ldo33_reg: LDO33 {
+     regulator-name = "tsp_avdd";
+     regulator-min-microvolt = <3300000>;
+     regulator-max-microvolt = <3300000>;
+    };
+   };
+  };
+ };
+
+ hsi2c@13690000 {
+  status = "okay";
+
+  max77838@60 {
+   regulators {
+    ldo2: LDO2 {
+     regulator-name = "HRM_1.8V_AP";
+     regulator-min-microvolt = <1800000>;
+     regulator-max-microvolt = <1800000>;
+    };
+    ldo4: LDO4 {
+     regulator-name = "HRM_3.3V_AP";
+     regulator-min-microvolt = <3300000>;
+     regulator-max-microvolt = <3300000>;
+    };
+   };
+  };
+ };
+
  pinctrl@14CC0000 {
   codec_reset: codec-reset {
    samsung,pins ="gpe6-5";
-   samsung,pin-function = <1>;
-   samsung,pin-pud = <1>;
-   samsung,pin-con-pdn =<3>;
-   samsung,pin-pud-pdn = <1>;
-   samsung,pin-val = <0>;
-  };
-
-  audio_clk_sel: audio-clk-sel {
-   samsung,pins ="gpe0-5";
    samsung,pin-function = <1>;
    samsung,pin-pud = <1>;
    samsung,pin-con-pdn =<3>;
@@ -9644,33 +9607,6 @@
 
   max77854@66 {
    status = "okay";
-  };
- };
-
- pinctrl@10580000 {
-  attn_irq: attn-irq {
-   samsung,pins = "gpa2-0";
-   samsung,pin-function = <0xf>;
-   samsung,pin-pud = <0>;
-   samsung,pin-drv = <0>;
-  };
-
-  attn_input: attn-input {
-   samsung,pins = "gpa2-0";
-   samsung,pin-function = <0>;
-   samsung,pin-pud = <1>;
-  };
- };
-
- hsi2c@14E10000 {
-  touchscreen@49{
-   stm,irq_gpio = <&gpa2 0 0>;
-  };
- };
-
- hsi2c@14E10000 {
-  touchscreen@48{
-   status = "disabled";
   };
  };
 
@@ -9701,17 +9637,19 @@
     <0x1F 0x00>,
     <0x21 0xC0>,
     <0x2F 0x00>;
-   maxim,sub_reg = <0x34>;
-   maxim,interleave= <1>;
   };
  };
 
- sound {
-  mixer-paths = "mixer_paths_r00.xml";
+ hsi2c@14E10000 {
+  touchscreen@49{
+   status = "disabled";
+  };
+ };
 
-  pinctrl-names = "default";
-  pinctrl-0 = <&audio_clk_sel>;
-  status = "okay";
+ i2c@20 {
+  touchkey@20 {
+   abov,sub-det = <&gpa3 0 0>;
+  };
  };
 
  spi_1: spi@14d30000 {
@@ -9745,8 +9683,8 @@
    ssp,prox-hi_thresh = <2000>;
    ssp,prox-low_thresh = <1400>;
    ssp-ap-rev = <1>;
-   ssp-mag-array = <10020 179 181 230 9097 (-150) (-179) 189 10850>;
-   ssp-glass-type = <1>;
+   ssp-mag-array = <9787 662 79 290 9460 27 200 (-33) 10632>;
+   ssp-glass-type = <0>;
 
    controller-data {
     cs-gpio = <&gpe2 5 0>;
@@ -9775,19 +9713,30 @@
   };
  };
 
- pinctrl@136D0000 {
-  fimc_is_mclk0_fn: fimc_is_mclk0_fn {
-   samsung,pins = "gpk0-0";
+ pinctrl@15690000 {
+  sd2_clk: sd2-clk {
+   samsung,pins = "gpj0-0";
    samsung,pin-function = <2>;
    samsung,pin-pud = <0>;
    samsung,pin-drv = <1>;
   };
 
-  fimc_is_mclk2_fn: fimc_is_mclk2_fn {
-   samsung,pins = "gpk0-2";
+  sd2_bus1: sd2-bus-width1 {
+   samsung,pins = "gpj0-3";
    samsung,pin-function = <2>;
    samsung,pin-pud = <0>;
-   samsung,pin-drv = <0>;
+   samsung,pin-drv = <2>;
   };
+
+  sd2_bus4: sd2-bus-width4 {
+   samsung,pins = "gpj0-4", "gpj0-5", "gpj0-6";
+   samsung,pin-function = <2>;
+   samsung,pin-pud = <0>;
+   samsung,pin-drv = <2>;
+  };
+ };
+
+ dwmmc2@15740000 {
+  supports-vqmmc19;
  };
 };
