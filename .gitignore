@@ -42,10 +42,12 @@ modules.builtin
 *zImage-dtb
 *boot.img
 *Image
-arch/arm/boot/dts/*.dtb
-arch/arm/boot/dts/*.reverse.dts
+arch/arm64/boot/dts/*.dtb
+arch/arm64/boot/dts/*.reverse.dts
+arch/arm64/boot/dtb/*
 dt.img
-arch/arm/boot/compressed/piggy.gzip
+dtb.img
+arch/arm64/boot/compressed/piggy.gzip
 kernel/config_data.h
 scripts/recordmcount
 kernel/usr/*
