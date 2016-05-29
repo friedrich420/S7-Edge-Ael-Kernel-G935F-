@@ -712,7 +712,7 @@ int __weak pci_register_io_range(phys_addr_t addr, resource_size_t size)
 	}
 
 	/* add the range to the list */
-	range = kzalloc(sizeof(*range), GFP_ATOMIC);
+	range = kzalloc(sizeof(*range), GFP_KERNEL);
 	if (!range) {
 		err = -ENOMEM;
 		goto end_register;
