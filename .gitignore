@@ -45,6 +45,7 @@ modules.builtin
 arch/arm64/boot/dts/*.dtb
 arch/arm64/boot/dts/*.reverse.dts
 arch/arm64/boot/dtb/*
+arch/arm64/boot/dtb/*.dts
 dt.img
 dtb.img
 arch/arm64/boot/compressed/piggy.gzip
