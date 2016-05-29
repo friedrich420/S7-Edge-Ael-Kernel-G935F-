@@ -1739,7 +1739,7 @@ void __detach_mounts(struct dentry *dentry)
 
 	namespace_lock();
 	mp = lookup_mountpoint(dentry);
-	if (IS_ERR_OR_NULL(mp))
+	if (!mp)
 		goto out_unlock;
 
 	lock_mount_hash();
