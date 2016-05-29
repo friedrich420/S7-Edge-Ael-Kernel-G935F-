@@ -30,6 +30,8 @@ obj-$(CONFIG_CPU_FREQ_GOV_BARRY_ALLEN)	+= cpufreq_barry_allen.o
 //obj-$(CONFIG_CPU_FREQ_GOV_PEGASUSQ)	+= cpufreq_pegasusq.o
 //obj-$(CONFIG_CPU_FREQ_GOV_INTELLIMM)	+= cpufreq_intellimm.o
 obj-$(CONFIG_CPU_FREQ_GOV_WAVE)		+= cpufreq_wave.o
+obj-$(CONFIG_CPU_FREQ_GOV_YANKACTIVE)	+= cpufreq_yankactive.o
+obj-$(CONFIG_CPU_FREQ_GOV_INTERACTIVE_PRO)	+= cpufreq_interactive_pro.o
 
 obj-$(CONFIG_CPU_FREQ_GOV_COMMON)		+= cpufreq_governor.o
 
