@@ -88,6 +88,7 @@ static gpu_dvfs_info gpu_dvfs_table_default[] = {
 	{419, 800000, 0, 78,  85, 1, 0, 1144000, 267000,  858000, CPU_MAX},
 	{338, 800000, 0, 78,  85, 1, 0,  546000, 200000,       0, CPU_MAX},
 	{260, 800000, 0, 78,  85, 1, 0,  421000, 160000,       0, CPU_MAX},
+	{160, 800000, 0,  0,  85, 1, 0,  421000, 160000,       0, CPU_MAX},
 };
 
 static int mif_min_table[] = {
@@ -99,9 +100,9 @@ static int mif_min_table[] = {
 };
 
 static gpu_attribute gpu_config_attributes[] = {
-	{GPU_MAX_CLOCK, 650},
-	{GPU_MAX_CLOCK_LIMIT, 650},
-	{GPU_MIN_CLOCK, 260},
+	{GPU_MAX_CLOCK, 806},
+	{GPU_MAX_CLOCK_LIMIT, 806},
+	{GPU_MIN_CLOCK, 160},
 	{GPU_DVFS_START_CLOCK, 260},
 	{GPU_DVFS_BL_CONFIG_CLOCK, 260},
 	{GPU_GOVERNOR_TYPE, G3D_DVFS_GOVERNOR_INTERACTIVE},
