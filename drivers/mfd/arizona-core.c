@@ -2111,6 +2111,10 @@ int arizona_dev_init(struct arizona *arizona)
 		break;
 	}
 
+	pm_runtime_set_autosuspend_delay(arizona->dev, 100);
+	pm_runtime_use_autosuspend(arizona->dev);
+	pm_runtime_enable(arizona->dev);
+
 	/* Chip default */
 	if (!arizona->pdata.clk32k_src)
 		arizona->pdata.clk32k_src = ARIZONA_32KZ_MCLK2;
@@ -2384,6 +2388,10 @@ int arizona_dev_init(struct arizona *arizona)
 		dev_err(arizona->dev, "Failed to add subdevices: %d\n", ret);
 		goto err_irq;
 	}
+
+#ifdef CONFIG_PM_RUNTIME
+	regulator_disable(arizona->dcvdd);
+#endif
 
 	return 0;
 
