@@ -72,9 +72,9 @@ static long ratelimit_pages = 32;
  */
 
 #ifdef CONFIG_ZEN_INTERACTIVE
-int dirty_background_ratio;
+int dirty_background_ratio = 20;
 #else
-int dirty_background_ratio = 10;
+int dirty_background_ratio = 0;
 #endif
 
 /*
@@ -99,9 +99,9 @@ int vm_highmem_is_dirtyable;
  */
 
 #ifdef CONFIG_ZEN_INTERACTIVE
-int vm_dirty_ratio;
+int vm_dirty_ratio = 50;
 #else
-int vm_dirty_ratio = 20;
+int vm_dirty_ratio = 0;
 #endif
 
 /*
