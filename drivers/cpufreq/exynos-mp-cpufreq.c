@@ -71,7 +71,7 @@
 #define CL0_MIN_FREQ		442000
 #define CL0_MAX_FREQ		1586000
 #define CL1_MIN_FREQ		728000
-#define CL1_MAX_FREQ		2288000
+#define CL1_MAX_FREQ		2600000
 #else
 #error "Please define core frequency ranges for current SoC."
 #endif
