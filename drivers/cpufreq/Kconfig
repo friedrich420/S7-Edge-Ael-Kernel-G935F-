@@ -264,6 +264,12 @@ config CPU_FREQ_DEFAULT_GOV_WAVE
 	select CPU_FREQ_GOV_WAVE
 	help
 
+config CPU_FREQ_DEFAULT_GOV_SMARTMAX_EPS
+	bool "smartmax_eps"
+	select CPU_FREQ_GOV_SMARTMAX_EPS
+	help
+	  Use the CPUFreq governor 'smartmax eps' as default
+
 endchoice
 
 config CPU_FREQ_GOV_PERFORMANCE
@@ -484,10 +490,12 @@ config CPU_FREQ_GOV_WAVE
 	tristate "'wave' cpufreq governor"
 	depends on CPU_FREQ
 
-config CPU_FREQ_DEFAULT_GOV_WAVE
-	bool "wave"
-	select CPU_FREQ_GOV_WAVE
+config CPU_FREQ_GOV_SMARTMAX_EPS
+	tristate "'smartmax EPS' cpufreq policy governor"
+	select CPU_FREQ_TABLE
 	help
+	  'smartmax EPS' is the extreme powersaving version of smartmax
+
 
 config MODE_AUTO_CHANGE
 	bool "automatic governor parameter change"
