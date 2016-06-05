@@ -40,11 +40,6 @@
 /* uncomment since no touchscreen defines android touch, do that here */
 //#define ANDROID_TOUCH_DECLARED
 
-/* if Sweep2Wake is compiled it will already have taken care of this */
-#ifdef CONFIG_TOUCHSCREEN_SWEEP2WAKE
-#define ANDROID_TOUCH_DECLARED
-#endif
-
 /* Version, author, desc, etc */
 #define DRIVER_AUTHOR "Dennis Rassmann <showp1984@gmail.com>"
 #define DRIVER_DESCRIPTION "Doubletap2wake for almost any device"
