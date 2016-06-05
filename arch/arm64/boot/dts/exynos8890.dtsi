@@ -400,15 +400,9 @@
 
 		/* MNGS */
 		cl1_idx_num = <28>;
-<<<<<<< HEAD
 		cl1_max_support_idx = <3>;
-		cl1_min_support_idx = <24>;
-		cl1_boot_max_qos = <2700000>;
-=======
-		cl1_max_support_idx = <1>;
 		cl1_min_support_idx = <25>;
-		cl1_boot_max_qos = <2800000>;
->>>>>>> 6c9939a... lower A53 to 338000Mhz and A72 to 416000Mhz
+		cl1_boot_max_qos = <2700000>;
 		cl1_boot_min_qos = <2496000>;
 		cl1_en_ema = <1>;
 		cl1_en_smpl = <1>;
