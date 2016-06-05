@@ -29,8 +29,10 @@
 #include <linux/slab.h>
 #include <linux/workqueue.h>
 #include <linux/input.h>
-#ifdef CONFIG_STATE_NOTIFIER
-#include <linux/state_notifier.h>
+#ifndef CONFIG_POWERSUSPEND
+#include <linux/lcd_notify.h>
+#else
+#include <linux/powersuspend.h>
 #endif
 #include <linux/hrtimer.h>
 #include <asm-generic/cputime.h>
@@ -69,8 +71,8 @@ static cputime64_t tap_time_pre = 0;
 static int touch_x = 0, touch_y = 0, touch_nr = 0, x_pre = 0, y_pre = 0;
 static bool touch_x_called = false, touch_y_called = false, touch_cnt = true;
 static bool scr_suspended = false, exec_count = true;
-#ifdef CONFIG_STATE_NOTIFIER
-static struct notifier_block dt2w_state_notif;
+#ifndef CONFIG_POWERSUSPEND
+static struct notifier_block dt2w_lcd_notif;
 #endif
 static struct input_dev * doubletap2wake_pwrdev;
 static DEFINE_MUTEX(pwrkeyworklock);
@@ -279,23 +281,36 @@ static struct input_handler dt2w_input_handler = {
 	.id_table	= dt2w_ids,
 };
 
-#ifdef CONFIG_STATE_NOTIFIER
-static int state_notifier_callback(struct notifier_block *this,
+#ifndef CONFIG_POWERSUSPEND
+static int lcd_notifier_callback(struct notifier_block *this,
 				unsigned long event, void *data)
 {
 	switch (event) {
-		case STATE_NOTIFIER_ACTIVE:
-			scr_suspended = false;
-			break;
-		case STATE_NOTIFIER_SUSPEND:
-			scr_suspended = true;
-			break;
-		default:
-			break;
+	case LCD_EVENT_ON_END:
+		scr_suspended = false;
+		break;
+	case LCD_EVENT_OFF_END:
+		scr_suspended = true;
+		break;
+	default:
+		break;
 	}
 
 	return 0;
 }
+#else
+static void dt2w_early_suspend(struct power_suspend *h) {
+	scr_suspended = true;
+}
+
+static void dt2w_late_resume(struct power_suspend *h) {
+	scr_suspended = false;
+}
+
+static struct power_suspend dt2w_power_suspend_handler = {
+	.suspend = dt2w_early_suspend,
+	.resume = dt2w_late_resume,
+};
 #endif
 
 /*
@@ -384,11 +399,13 @@ static int __init doubletap2wake_init(void)
 	if (rc)
 		pr_err("%s: Failed to register dt2w_input_handler\n", __func__);
 
-#ifdef CONFIG_STATE_NOTIFIER
-	dt2w_state_notif.notifier_call = state_notifier_callback;
-	if (state_register_client(&dt2w_state_notif) != 0) {
-		pr_err("%s: Failed to register state notifier callback\n", __func__);
+#ifndef CONFIG_POWERSUSPEND
+	dt2w_lcd_notif.notifier_call = lcd_notifier_callback;
+	if (lcd_register_client(&dt2w_lcd_notif) != 0) {
+		pr_err("%s: Failed to register lcd callback\n", __func__);
 	}
+#else
+	register_power_suspend(&dt2w_power_suspend_handler);
 #endif
 
 #ifndef ANDROID_TOUCH_DECLARED
@@ -419,8 +436,8 @@ static void __exit doubletap2wake_exit(void)
 #ifndef ANDROID_TOUCH_DECLARED
 	kobject_del(android_touch_kobj);
 #endif
-#ifdef CONFIG_STATE_NOTIFIER
-	state_unregister_client(&dt2w_state_notif);
+#ifndef CONFIG_POWERSUSPEND
+	lcd_unregister_client(&dt2w_lcd_notif);
 #endif
 	input_unregister_handler(&dt2w_input_handler);
 	destroy_workqueue(dt2w_input_wq);
