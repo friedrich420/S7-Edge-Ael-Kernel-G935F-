@@ -53,7 +53,7 @@
  * towards the ideal frequency and slower after it has passed it. Similarly,
  * lowering the frequency towards the ideal frequency is faster than below it.
  */
-#define DEFAULT_AWAKE_IDEAL_FREQ 378000
+#define DEFAULT_AWAKE_IDEAL_FREQ 300000
 static unsigned int awake_ideal_freq;
 
 /*
@@ -62,7 +62,7 @@ static unsigned int awake_ideal_freq;
  * that practically when sleep_ideal_freq==0 the awake_ideal_freq is used
  * also when suspended).
  */
-#define DEFAULT_SLEEP_IDEAL_FREQ 378000
+#define DEFAULT_SLEEP_IDEAL_FREQ 300000
 static unsigned int sleep_ideal_freq;
 
 /*
@@ -111,7 +111,7 @@ static unsigned long down_rate_us;
  * The frequency to set when waking up from sleep.
  * When sleep_ideal_freq=0 this will have no effect.
  */
-#define DEFAULT_SLEEP_WAKEUP_FREQ 1188000
+#define DEFAULT_SLEEP_WAKEUP_FREQ 1190000
 static unsigned int sleep_wakeup_freq;
 
 /*
@@ -253,10 +253,10 @@ inline static int target_freq(struct cpufreq_policy *policy, struct smartass_inf
 			// to ramp up to *at least* current + ramp_up_step.
 			if (new_freq > old_freq && prefered_relation==CPUFREQ_RELATION_H
 			    && !cpufreq_frequency_table_target(policy,table,new_freq,
-							       CPUFREQ_RELATION_L,&index))
+							       CPUFREQ_RELATION_C,&index))
 				target = table[index].frequency;
 			// simlarly for ramping down:
-			else if (new_freq < old_freq && prefered_relation==CPUFREQ_RELATION_L
+			else if (new_freq < old_freq && prefered_relation==CPUFREQ_RELATION_C
 				&& !cpufreq_frequency_table_target(policy,table,new_freq,
 								   CPUFREQ_RELATION_H,&index))
 				target = table[index].frequency;
@@ -390,7 +390,7 @@ static void cpufreq_smartass_freq_change_time_work(struct work_struct *work)
 	int ramp_dir;
 	struct smartass_info_s *this_smartass;
 	struct cpufreq_policy *policy;
-	unsigned int relation = CPUFREQ_RELATION_L;
+	unsigned int relation = CPUFREQ_RELATION_C;
 	for_each_possible_cpu(cpu) {
 		this_smartass = &per_cpu(smartass_info, cpu);
 		if (!work_cpumask_test_and_clear(cpu))
@@ -736,7 +736,7 @@ static int cpufreq_governor_smartass(struct cpufreq_policy *new_policy,
 		else if (this_smartass->cur_policy->cur < new_policy->min) {
 			dprintk(SMARTASS_DEBUG_JUMPS,"SmartassI: jumping to new min freq: %d\n",new_policy->min);
 			__cpufreq_driver_target(this_smartass->cur_policy,
-						new_policy->min, CPUFREQ_RELATION_L);
+						new_policy->min, CPUFREQ_RELATION_C);
 		}
 
 		if (this_smartass->cur_policy->cur < new_policy->max && !timer_pending(&this_smartass->timer))
@@ -778,7 +778,7 @@ static void smartass_suspend(int cpu, int suspend)
 		dprintk(SMARTASS_DEBUG_JUMPS,"SmartassS: awaking at %d\n",new_freq);
 
 		__cpufreq_driver_target(policy, new_freq,
-					CPUFREQ_RELATION_L);
+					CPUFREQ_RELATION_C);
 	} else {
 		// to avoid wakeup issues with quick sleep/wakeup don't change actual frequency when entering sleep
 		// to allow some time to settle down. Instead we just reset our statistics (and reset the timer).
@@ -824,27 +824,27 @@ static struct early_suspend smartass_power_suspend = {
 #ifdef CONFIG_POWERSUSPEND
 static void cpufreq_smartass_power_suspend(struct power_suspend *h)
 {
-    int i;
-    if (suspended || sleep_ideal_freq==0) // disable behavior for sleep_ideal_freq==0
-        return;
-    suspended = 1;
-    for_each_online_cpu(i)
-    smartass_suspend(i,1);
+	int i;
+	if (suspended || sleep_ideal_freq==0) // disable behavior for sleep_ideal_freq==0
+		return;
+	suspended = 1;
+	for_each_online_cpu(i)
+	smartass_suspend(i,1);
 }
 
 static void cpufreq_smartass_power_resume(struct power_suspend *h)
 {
-    int i;
-    if (!suspended) // already not suspended so nothing to do
-        return;
-    suspended = 0;
-    for_each_online_cpu(i)
-    smartass_suspend(i,0);
+	int i;
+	if (!suspended) // already not suspended so nothing to do
+		return;
+	suspended = 0;
+	for_each_online_cpu(i)
+	smartass_suspend(i,0);
 }
 
 static struct power_suspend smartass_power_suspend = {
-    .suspend = cpufreq_smartass_power_suspend,
-    .resume = cpufreq_smartass_power_resume,
+	.suspend = cpufreq_smartass_power_suspend,
+	.resume = cpufreq_smartass_power_resume,
 };
 #endif
 
@@ -899,7 +899,7 @@ static int __init cpufreq_smartass_init(void)
 #endif
 
 #ifdef CONFIG_POWERSUSPEND
-    register_power_suspend(&smartass_power_suspend);
+	register_power_suspend(&smartass_power_suspend);
 #endif
 
 	return cpufreq_register_governor(&cpufreq_gov_smartass2);
