@@ -344,8 +344,8 @@ static ssize_t store_ignore_nice_load(struct kobject *a, struct attribute *b,
     for_each_online_cpu(j) {
 	struct cpu_dbs_info_s *dbs_info;
 	dbs_info = &per_cpu(od_cpu_dbs_info, j);
-	//dbs_info->prev_cpu_idle = get_cpu_idle_time(j,
-						    //&dbs_info->prev_cpu_wall, 0);
+	dbs_info->prev_cpu_idle = get_cpu_idle_time(j,
+						    &dbs_info->prev_cpu_wall, 0);
 	if (dbs_tuners_ins.ignore_nice)
 	    dbs_info->prev_cpu_nice = kcpustat_cpu(j).cpustat[CPUTIME_NICE];
 
@@ -480,7 +480,7 @@ static void dbs_check_cpu(struct cpu_dbs_info_s *this_dbs_info)
 
 	j_dbs_info = &per_cpu(od_cpu_dbs_info, j);
 
-	//cur_idle_time = get_cpu_idle_time(j, &cur_wall_time, 0);
+	cur_idle_time = get_cpu_idle_time(j, &cur_wall_time, 0);
 	cur_iowait_time = get_cpu_iowait_time(j, &cur_wall_time);
 
 	wall_time = (unsigned int) (cur_wall_time - j_dbs_info->prev_cpu_wall);
@@ -524,7 +524,7 @@ static void dbs_check_cpu(struct cpu_dbs_info_s *this_dbs_info)
 
 	load = 100 * (wall_time - idle_time) / wall_time;
 
-	freq_avg = __cpufreq_driver_getavg(policy, j);
+	//freq_avg = __cpufreq_driver_getavg(policy, j);
 	if (freq_avg <= 0)
 	    freq_avg = policy->cur;
 
@@ -709,8 +709,8 @@ static int cpufreq_governor_dbs(struct cpufreq_policy *policy,
 	    j_dbs_info = &per_cpu(od_cpu_dbs_info, j);
 	    j_dbs_info->cur_policy = policy;
 
-	    //j_dbs_info->prev_cpu_idle = get_cpu_idle_time(j,
-							  //&j_dbs_info->prev_cpu_wall, 0);
+	    j_dbs_info->prev_cpu_idle = get_cpu_idle_time(j,
+							  &j_dbs_info->prev_cpu_wall, 0);
 	    if (dbs_tuners_ins.ignore_nice) {
 		j_dbs_info->prev_cpu_nice =
 		    kcpustat_cpu(j).cpustat[CPUTIME_NICE];
