@@ -565,6 +565,9 @@ extern struct cpufreq_governor cpufreq_gov_electrodemand;
 #elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND_X)
 extern struct cpufreq_governor cpufreq_gov_ondemand_x;
 #define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_ondemand_x)
+#elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_ELECTROACTIVE)
+extern struct cpufreq_governor cpufreq_gov_electroactive;
+#define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_electroactive)
 #endif
 
 /*********************************************************************
