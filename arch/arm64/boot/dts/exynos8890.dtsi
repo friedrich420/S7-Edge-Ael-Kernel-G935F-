@@ -108,6 +108,7 @@
 			compatible = "arm,cortex-a53", "arm,armv8";
 			reg = <0x0 0x100>;
 			enable-method = "psci";
+			sched-energy-costs = <&CPU_COST_A53 &CLUSTER_COST_A53>;
 			cpu-idle-states = <&CPU_SLEEP_BOOT>;
 		};
 		cpu@101 {
@@ -115,6 +116,7 @@
 			compatible = "arm,cortex-a53", "arm,armv8";
 			reg = <0x0 0x101>;
 			enable-method = "psci";
+			sched-energy-costs = <&CPU_COST_A53 &CLUSTER_COST_A53>;
 			cpu-idle-states = <&CPU_SLEEP_BOOT>;
 		};
 		cpu@102 {
@@ -122,6 +124,7 @@
 			compatible = "arm,cortex-a53", "arm,armv8";
 			reg = <0x0 0x102>;
 			enable-method = "psci";
+			sched-energy-costs = <&CPU_COST_A53 &CLUSTER_COST_A53>;
 			cpu-idle-states = <&CPU_SLEEP_BOOT>;
 		};
 		cpu@103 {
@@ -129,6 +132,7 @@
 			compatible = "arm,cortex-a53", "arm,armv8";
 			reg = <0x0 0x103>;
 			enable-method = "psci";
+			sched-energy-costs = <&CPU_COST_A53 &CLUSTER_COST_A53>;
 			cpu-idle-states = <&CPU_SLEEP_BOOT>;
 		};
 		cpu@0 {
@@ -136,6 +140,7 @@
 			compatible = "arm,mongoose", "arm,armv8";
 			reg = <0x0 0x0>;
 			enable-method = "psci";
+			sched-energy-costs = <&CPU_COST_MNGS &CLUSTER_COST_MNGS>;
 			cpu-idle-states = <&CPU_SLEEP_NONBOOT>;
 		};
 		cpu@1 {
@@ -143,6 +148,7 @@
 			compatible = "arm,mongoose", "arm,armv8";
 			reg = <0x0 0x1>;
 			enable-method = "psci";
+			sched-energy-costs = <&CPU_COST_MNGS &CLUSTER_COST_MNGS>;
 			cpu-idle-states = <&CPU_SLEEP_NONBOOT>;
 		};
 		cpu@2 {
@@ -150,6 +156,7 @@
 			compatible = "arm,mongoose", "arm,armv8";
 			reg = <0x0 0x2>;
 			enable-method = "psci";
+			sched-energy-costs = <&CPU_COST_MNGS &CLUSTER_COST_MNGS>;
 			cpu-idle-states = <&CPU_SLEEP_NONBOOT>;
 		};
 		cpu@3 {
@@ -157,6 +164,7 @@
 			compatible = "arm,mongoose", "arm,armv8";
 			reg = <0x0 0x3>;
 			enable-method = "psci";
+			sched-energy-costs = <&CPU_COST_MNGS &CLUSTER_COST_MNGS>;
 			cpu-idle-states = <&CPU_SLEEP_NONBOOT>;
 		};
 
@@ -183,6 +191,8 @@
 				status = "okay";
 			};
 		};
+
+		/include/ "exynos8890-sched-energy.dtsi"
 	};
 
 	coresight@16000000 {

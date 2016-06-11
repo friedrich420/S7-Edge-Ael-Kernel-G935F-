@@ -1,0 +1,128 @@
+/*
+ * SAMSUNG EXYNOS8890 SoC specific energy cost model data. There are no unit requirements for
+ * the data. Data can be normalized to any reference point, but the
+ * normalization must be consistent.
+ *
+ * Copyright (C) 2016  Jesse Chan
+ */
+
+energy-costs {
+	CPU_COST_MNGS: core-cost0 {
+		busy-cost-data = <
+			 136    98 /* ARM L26: 300MHz */
+			 181   131 /* ARM L25: 400MHz */
+			 226   164 /* ARM L24: 500MHz */
+			 272   197 /* ARM L23: 600MHz */
+			 317   230 /* ARM L22: 700MHz */
+			 362   263 /* ARM L21: 800MHz */
+			 407   296 /* ARM L20: 900MHz */
+			 452   359 /* ARM L19: 1.0GHz */
+			 498   419 /* ARM L18: 1.2GHz */
+			 543   482 /* ARM L17: 1.3GHz */
+			 588   552 /* ARM L16: 1.4GHz */
+			 633   641 /* ARM L15: 1.5GHz */
+			 679   722 /* ARM L14: 1.6GHz */
+			 724   849 /* ARM L13: 1.7GHz */
+			 769   945 /* ARM L12: 1.8GHz */
+			 814  1072 /* ARM L11: 1.9GHz */
+			 860  1208 /* ARM L10: 2.0GHz */
+			 905  1327 /* ARM L9: 2.1GHz  */
+			 950  1483 /* ARM L8: 2.2GHz  */
+			 995  1650 /* ARM L7: 2.3GHz  */
+			1041  1794 /* ARM L6: 2.4GHz  */
+			1086  1983 /* ARM L5: 2.5GHz  */
+			1131  2184 /* ARM L4: 2.6GHz  */
+			1176  2440 /* ARM L3: 2.7GHz  */
+		>;
+		idle-cost-data = <
+			65
+			60
+			28
+			21
+		>;
+	};
+	CPU_COST_A53: core-cost1 {
+		busy-cost-data = <
+			 64    12 /* ARM L16: 300MHz  */
+			 84    15 /* ARM L15: 400MHz  */
+			104    20 /* ARM L14: 500MHz  */
+			124    28 /* ARM L13: 700MHz  */
+			143    35 /* ARM L12: 800MHz  */
+			163    44 /* ARM L11: 900MHz  */
+			183    56 /* ARM L10: 1000MHz */
+			203    66 /* ARM L9: 1.1GHz   */
+			222    81 /* ARM L8: 1.2GHz   */
+			242    97 /* ARM L7: 1.3GHz   */
+			262   115 /* ARM L6: 1.4GHz   */
+			282   138 /* ARM L5: 1.5GHz   */
+			301   161 /* ARM L4: 1.6GHz   */
+			321   193 /* ARM L3: 1.7GHz   */
+			341   204 /* ARM L2: 1.8GHz   */
+		>;
+		idle-cost-data = <
+			33
+			25
+			23
+			18
+		>;
+	};
+	CLUSTER_COST_MNGS: cluster-cost0 {
+		busy-cost-data = <
+			 136    98 /* ARM L26: 300MHz */
+			 181   131 /* ARM L25: 400MHz */
+			 226   164 /* ARM L24: 500MHz */
+			 272   197 /* ARM L23: 600MHz */
+			 317   230 /* ARM L22: 700MHz */
+			 362   263 /* ARM L21: 800MHz */
+			 407   296 /* ARM L20: 900MHz */
+			 452   359 /* ARM L19: 1.0GHz */
+			 498   419 /* ARM L18: 1.2GHz */
+			 543   482 /* ARM L17: 1.3GHz */
+			 588   552 /* ARM L16: 1.4GHz */
+			 633   641 /* ARM L15: 1.5GHz */
+			 679   722 /* ARM L14: 1.6GHz */
+			 724   849 /* ARM L13: 1.7GHz */
+			 769   945 /* ARM L12: 1.8GHz */
+			 814  1072 /* ARM L11: 1.9GHz */
+			 860  1208 /* ARM L10: 2.0GHz */
+			 905  1327 /* ARM L9: 2.1GHz  */
+			 950  1483 /* ARM L8: 2.2GHz  */
+			 995  1650 /* ARM L7: 2.3GHz  */
+			1041  1794 /* ARM L6: 2.4GHz  */
+			1086  1983 /* ARM L5: 2.5GHz  */
+			1131  2184 /* ARM L4: 2.6GHz  */
+			1176  2440 /* ARM L3: 2.7GHz  */
+		>;
+		idle-cost-data = <
+			 0
+			 0
+			 0
+			 0
+		>;
+	};
+	CLUSTER_COST_A53: cluster-cost1 {
+		busy-cost-data = <
+			 64    12 /* ARM L16: 300MHz  */
+			 84    15 /* ARM L15: 400MHz  */
+			104    20 /* ARM L14: 500MHz  */
+			124    28 /* ARM L13: 700MHz  */
+			143    35 /* ARM L12: 800MHz  */
+			163    44 /* ARM L11: 900MHz  */
+			183    56 /* ARM L10: 1000MHz */
+			203    66 /* ARM L9: 1.1GHz   */
+			222    81 /* ARM L8: 1.2GHz   */
+			242    97 /* ARM L7: 1.3GHz   */
+			262   115 /* ARM L6: 1.4GHz   */
+			282   138 /* ARM L5: 1.5GHz   */
+			301   161 /* ARM L4: 1.6GHz   */
+			321   193 /* ARM L3: 1.7GHz   */
+			341   204 /* ARM L2: 1.8GHz   */
+		>;
+		idle-cost-data = <
+			 0
+			 0
+			 0
+			 0
+		>;
+	};
+};
