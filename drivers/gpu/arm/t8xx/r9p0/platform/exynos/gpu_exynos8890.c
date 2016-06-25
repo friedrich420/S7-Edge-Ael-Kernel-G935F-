@@ -100,16 +100,10 @@ static int mif_min_table[] = {
 };
 
 static gpu_attribute gpu_config_attributes[] = {
-<<<<<<< HEAD
 	{GPU_MAX_CLOCK, 806},
 	{GPU_MAX_CLOCK_LIMIT, 806},
 	{GPU_MIN_CLOCK, 160},
-=======
-	{GPU_MAX_CLOCK, 650},
-	{GPU_MAX_CLOCK_LIMIT, 650},
-	{GPU_MIN_CLOCK, 260},
 	{GPU_MIN_CLOCK_LIMIT, 260},
->>>>>>> d2253b0... GPU-MALI: Added GPU clock control interface
 	{GPU_DVFS_START_CLOCK, 260},
 	{GPU_DVFS_BL_CONFIG_CLOCK, 260},
 	{GPU_GOVERNOR_TYPE, G3D_DVFS_GOVERNOR_INTERACTIVE},
