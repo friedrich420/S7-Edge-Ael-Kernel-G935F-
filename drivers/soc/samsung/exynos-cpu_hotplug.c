@@ -509,7 +509,7 @@ static int __init cpu_hotplug_init(void)
 	register_pm_notifier(&exynos_cpu_hotplug_nb);
 
 	/* Enable cpu_hotplug */
-	update_enable_flag(false);
+	update_enable_flag(true);
 
 	return 0;
 }
