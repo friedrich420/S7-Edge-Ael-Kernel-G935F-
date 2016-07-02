@@ -39,6 +39,12 @@ obj-$(CONFIG_CPU_FREQ_GOV_ONDEMAND_X)	+= cpufreq_ondemand_x.o
 obj-$(CONFIG_CPU_FREQ_GOV_ELECTROACTIVE)	+= cpufreq_electroactive.o
 obj-$(CONFIG_CPU_FREQ_GOV_INTELLIDEMAND)	+= cpufreq_intellidemand.o
 obj-$(CONFIG_CPU_FREQ_GOV_CAFACTIVE)	+= cpufreq_cafactive.o
+obj-$(CONFIG_CPU_FREQ_GOV_IMPULSE)	+= cpufreq_impulse.o
+obj-$(CONFIG_CPU_FREQ_GOV_LAZY)		+= cpufreq_lazy.o
+obj-$(CONFIG_CPU_FREQ_GOV_INTEL)	+= cpufreq_intel.o
+obj-$(CONFIG_CPU_FREQ_GOV_HYBRID)	+= cpufreq_hybrid.o
+obj-$(CONFIG_CPU_FREQ_GOV_ADAPTIVE)	+= cpufreq_adaptive.o
+
 
 obj-$(CONFIG_CPU_FREQ_GOV_COMMON)	+= cpufreq_governor.o
 
