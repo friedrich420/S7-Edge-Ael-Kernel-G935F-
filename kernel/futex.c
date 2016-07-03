@@ -1257,11 +1257,8 @@ futex_wake(u32 __user *uaddr, unsigned int flags, int nr_wake, u32 bitset)
 	}
 
 	spin_unlock(&hb->lock);
-<<<<<<< HEAD
 out_put_key:
-=======
 	wake_up_q(&wake_q);
->>>>>>> db9566d... futex: Implement lockless wakeups
 	put_futex_key(&key);
 out:
 	return ret;
@@ -1732,11 +1729,8 @@ retry_private:
 out_unlock:
 	free_pi_state(pi_state);
 	double_unlock_hb(hb1, hb2);
-<<<<<<< HEAD
 	hb_waiters_dec(hb2);
-=======
 	wake_up_q(&wake_q);
->>>>>>> db9566d... futex: Implement lockless wakeups
 
 	/*
 	 * drop_futex_key_refs() must be called outside the spinlocks. During
