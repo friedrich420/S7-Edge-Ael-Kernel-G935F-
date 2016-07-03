@@ -370,6 +370,65 @@ config CPU_FREQ_DEFAULT_GOV_ADAPTIVE
 	designed for latency-sensitive workloads and also for demanding
 	performance.
 
+config CPU_FREQ_DEFAULT_GOV_PSYCHOACTIVE
+	bool "psychoactive"
+	select CPU_FREQ_GOV_PSYCHOACTIVE
+	---help---
+	'psychoactive' - This driver is a balanced- conservative governor based on scary ondemand conservative and interactive governors and aims to provide significant power savings with minimal cost of performance.
+
+config CPU_FREQ_DEFAULT_GOV_ZENX
+	bool "ZenX"
+	select CPU_FREQ_GOV_ZENX
+	help
+	  Use the CPUFreq governor 'ZenX' as default.
+
+config CPU_FREQ_DEFAULT_GOV_WREXY
+	bool "wrexy"
+	select CPU_FREQ_GOV_WREXY
+	help
+	  Use the CPUFreq governor 'wrexy' as default.
+
+config CPU_FREQ_DEFAULT_GOV_SKYWALKER
+	bool "skywalker"
+	select CPU_FREQ_GOV_SKYWALKER
+	help
+	  Use the CPUFreq governor 'skywalker' as default.
+
+config CPU_FREQ_DEFAULT_GOV_MINMAX
+	bool "minmax"
+	select CPU_FREQ_GOV_MINMAX
+	help
+	  Use the CPUFreq governor 'minmax' as default.
+
+config CPU_FREQ_DEFAULT_GOV_LULZACTIVE
+	bool "lulzactive"
+	select CPU_FREQ_GOV_LULZACTIVE
+	select CPU_FREQ_GOV_PERFORMANCE
+	help
+	  Use the CPUFreq governor 'lulzactive' as default.
+
+config CPU_FREQ_DEFAULT_GOV_INTERACTIVEX
+	bool "interactiveX"
+	select CPU_FREQ_GOV_INTERACTIVEX
+	help
+	  Use the CPUFreq governor 'interactiveX' as default. This allows
+	  you to get a full dynamic cpu frequency capable system by simply
+	  loading your cpufreq low-level hardware driver, using the
+	  'interactiveX' governor for latency-sensitive workloads.
+
+config CPU_FREQ_DEFAULT_GOV_LULZACTIVEW
+	bool "lulzactivew"
+	select CPU_FREQ_GOV_LULZACTIVEW
+	select CPU_FREQ_GOV_PERFORMANCE
+	help
+	  Use the CPUFreq governor 'lulzactivew' as default.
+
+config CPU_FREQ_DEFAULT_GOV_SAMSUNG
+	bool "samsung"
+	select CPU_FREQ_GOV_SAMSUNG
+	help
+	  Use the CPUFreq governor 'lulzactivew' as default.
+
 endchoice
 
 config CPU_FREQ_GOV_PERFORMANCE
@@ -724,6 +783,68 @@ config CPU_FREQ_GOV_ADAPTIVE
 	  'adaptive' - This driver adds a dynamic cpufreq policy governor
 	  designed for latency-sensitive workloads and also for demanding
 	  performance.
+
+config CPU_FREQ_GOV_PSYCHOACTIVE
+	tristate "'psychoactive' cpufreq policy governor"
+	---help---
+	  'psychoactive' - This driver is a balanced- conservative governor based on scary, ondemand, conservative and interactive governors and aims to provide significant power savings with minimal cost of performance.
+
+config CPU_FREQ_GOV_ZENX
+	tristate "'ZenX' cpufreq governor"
+	depends on CPU_FREQ
+	help
+	  'ZenX' - an interactive-based governor
+
+	  This governor provides full CPU hotplugging support
+	  based on average CPU load across all CPUs.
+
+	  For details, take a look at linux/Documentation/cpu-freq.
+
+	  If in doubt, say N
+
+config CPU_FREQ_GOV_WREXY
+	tristate "'wrexy' cpufreq governor"
+	depends on CPU_FREQ
+	help
+	  'wrexy' - an interactive-based governor
+
+config CPU_FREQ_GOV_SKYWALKER
+	tristate "'skywalker' cpufreq governor"
+	depends on CPU_FREQ
+	help
+	  'skywalker' - an interactive-based governor
+
+config CPU_FREQ_GOV_MINMAX
+	tristate "'minmax' cpufreq governor"
+	depends on CPU_FREQ
+	help
+	  'minmax' - an interactive-based governor
+
+config CPU_FREQ_GOV_LULZACTIVE
+	tristate "'lulzactive' cpufreq governor"
+	depends on CPU_FREQ
+	help
+	  'lulzactive' - a new interactive governor by Tegrak!
+	  For more information please visit:
+	  http://tegrak2x.blogspot.com/2011/11/lulzactive-governor-v2.html
+
+	  If in doubt, say N.
+
+config CPU_FREQ_GOV_INTERACTIVEX
+	tristate "'interactivex' cpufreq governor"
+	depends on CPU_FREQ
+
+config CPU_FREQ_GOV_LULZACTIVEW
+	tristate "'lulzactivew' cpufreq governor"
+	depends on CPU_FREQ
+	help
+	  'lulzactivew' - A combination of lulzactive and performance
+
+	   If in doubt, say N.
+
+config CPU_FREQ_GOV_SAMSUNG
+	tristate "'samsung' cpufreq governor"
+	depends on CPU_FREQ
 
 
 config MODE_AUTO_CHANGE
