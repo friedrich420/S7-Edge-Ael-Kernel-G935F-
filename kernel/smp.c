@@ -13,13 +13,9 @@
 #include <linux/gfp.h>
 #include <linux/smp.h>
 #include <linux/cpu.h>
-<<<<<<< HEAD
 #include <linux/sched.h>
-=======
 #define CREATE_TRACE_POINTS
-#include <trace/events/smp.h>
 #include <asm/relaxed.h>
->>>>>>> ea5ac48... Enhance power efficiency: Series of patches from NVIDIA on some critical blocking code paths to allow the CPU to relax instead of busy spinning thus lowering the load_average and lowering power consumption.
 
 #include "smpboot.h"
 
