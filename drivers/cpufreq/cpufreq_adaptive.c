@@ -375,7 +375,7 @@ static void cpufreq_adaptive_timer(unsigned long data)
 		new_freq = policy->cur;
 
 	if (cpufreq_frequency_table_target(policy, this_dbs_info->freq_table,
-					   new_freq, CPUFREQ_RELATION_L,
+					   new_freq, CPUFREQ_RELATION_C,
 					   &index)) {
 		goto do_nothing;
 	}
@@ -531,7 +531,7 @@ static void dbs_check_cpu(struct cpu_dbs_info_s *this_dbs_info)
 		cpufreq_frequency_table_target(policy,
 				this_dbs_info->freq_table,
 				(policy->cur + step_up_load),
-				CPUFREQ_RELATION_L, &index);
+				CPUFREQ_RELATION_C, &index);
 
 		new_freq = this_dbs_info->freq_table[index].frequency;
 		dbs_freq_increase(policy, new_freq);
@@ -561,7 +561,7 @@ static void dbs_check_cpu(struct cpu_dbs_info_s *this_dbs_info)
 			freq_next = policy->min;
 
 		__cpufreq_driver_target(policy, freq_next,
-				CPUFREQ_RELATION_L);
+				CPUFREQ_RELATION_C);
 	}
 }
 
@@ -752,7 +752,7 @@ static int cpufreq_governor_dbs(struct cpufreq_policy *policy,
 				policy->max, CPUFREQ_RELATION_H);
 		else if (policy->min > this_dbs_info->cur_policy->cur)
 			__cpufreq_driver_target(this_dbs_info->cur_policy,
-				policy->min, CPUFREQ_RELATION_L);
+				policy->min, CPUFREQ_RELATION_C);
 		mutex_unlock(&this_dbs_info->timer_mutex);
 		break;
 	}

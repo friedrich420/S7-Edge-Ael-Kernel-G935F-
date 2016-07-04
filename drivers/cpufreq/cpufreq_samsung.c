@@ -208,7 +208,7 @@ static unsigned int powersave_bias_target(struct cpufreq_policy *policy,
 	freq_lo = dbs_info->freq_table[index].frequency;
 	index = 0;
 	cpufreq_frequency_table_target(policy, dbs_info->freq_table, freq_avg,
-			CPUFREQ_RELATION_L, &index);
+			CPUFREQ_RELATION_C, &index);
 	freq_hi = dbs_info->freq_table[index].frequency;
 
 	/* Find out how long we have to be in hi and lo freqs */
@@ -236,7 +236,7 @@ static int ondemand_powersave_bias_setspeed(struct cpufreq_policy *policy,
 		/* maximum powersave; set to lowest frequency */
 		__cpufreq_driver_target(policy,
 			(altpolicy) ? altpolicy->min : policy->min,
-			CPUFREQ_RELATION_L);
+			CPUFREQ_RELATION_C);
 		return 1;
 	} else if (level == POWERSAVE_BIAS_MINLEVEL) {
 		/* minimum powersave; set to highest frequency */
@@ -504,7 +504,7 @@ static void dbs_freq_increase(struct cpufreq_policy *p, unsigned int freq)
 		return;
 
 	__cpufreq_driver_target(p, freq, dbs_tuners_ins.powersave_bias ?
-			CPUFREQ_RELATION_L : CPUFREQ_RELATION_H);
+			CPUFREQ_RELATION_C : CPUFREQ_RELATION_H);
 }
 
 static void dbs_check_cpu(struct cpu_dbs_info_s *this_dbs_info)
@@ -632,12 +632,12 @@ static void dbs_check_cpu(struct cpu_dbs_info_s *this_dbs_info)
 
 		if (!dbs_tuners_ins.powersave_bias) {
 			__cpufreq_driver_target(policy, freq_next,
-					CPUFREQ_RELATION_L);
+					CPUFREQ_RELATION_C);
 		} else {
 			int freq = powersave_bias_target(policy, freq_next,
-					CPUFREQ_RELATION_L);
+					CPUFREQ_RELATION_C);
 			__cpufreq_driver_target(policy, freq,
-				CPUFREQ_RELATION_L);
+				CPUFREQ_RELATION_C);
 		}
 	}
 }
@@ -741,7 +741,7 @@ static void dbs_refresh_callback(struct work_struct *unused)
 		policy->cur = policy->max;
 
 		__cpufreq_driver_target(policy, policy->max,
-					CPUFREQ_RELATION_L);
+					CPUFREQ_RELATION_C);
 	}
 }
 
@@ -923,7 +923,7 @@ static int cpufreq_governor_dbs(struct cpufreq_policy *policy,
 				policy->max, CPUFREQ_RELATION_H);
 		else if (policy->min > this_dbs_info->cur_policy->cur)
 			__cpufreq_driver_target(this_dbs_info->cur_policy,
-				policy->min, CPUFREQ_RELATION_L);
+				policy->min, CPUFREQ_RELATION_C);
 		else if (dbs_tuners_ins.powersave_bias != 0)
 			ondemand_powersave_bias_setspeed(
 				this_dbs_info->cur_policy,

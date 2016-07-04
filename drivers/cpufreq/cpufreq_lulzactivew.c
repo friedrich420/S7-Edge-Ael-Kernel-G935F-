@@ -1019,7 +1019,7 @@ static int cpufreq_governor_lulzactivew(struct cpufreq_policy *new_policy,
                                         new_policy->max, CPUFREQ_RELATION_H);
             else if (new_policy->min > new_policy->cur)
                 __cpufreq_driver_target(new_policy,
-                                        new_policy->min, CPUFREQ_RELATION_L);
+                                        new_policy->min, CPUFREQ_RELATION_C);
             break;
 	}
 	return 0;

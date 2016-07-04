@@ -297,7 +297,7 @@ static void cpufreq_interactive_timer(unsigned long data)
 	pcpu->local_hvtime = now;
 
 	if (cpufreq_frequency_table_target(pcpu->policy, pcpu->freq_table,
-					   new_freq, CPUFREQ_RELATION_L,
+					   new_freq, CPUFREQ_RELATION_C,
 					   &index)) {
 		spin_unlock_irqrestore(&pcpu->target_freq_lock, flags);
 		goto rearm;
@@ -1077,7 +1077,7 @@ static int cpufreq_governor_bluactive(struct cpufreq_policy *policy,
 
 	case CPUFREQ_GOV_LIMITS:
 		__cpufreq_driver_target(policy,
-			policy->cur, CPUFREQ_RELATION_L);
+			policy->cur, CPUFREQ_RELATION_C);
 		
 		for_each_cpu(j, policy->cpus) {
 			pcpu = &per_cpu(cpuinfo, j);

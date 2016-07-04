@@ -238,7 +238,7 @@ static void cpufreq_ondemandplus_timer(unsigned long data)
                                 }
                                 
                                 cpufreq_frequency_table_target(pcpu->policy, pcpu->freq_table, new_freq,
-                                                CPUFREQ_RELATION_L, &index);
+                                                CPUFREQ_RELATION_C, &index);
                                 
                                 new_freq = pcpu->freq_table[index].frequency;
                         }
@@ -630,7 +630,7 @@ static ssize_t store_inter_hifreq(struct kobject *kobj,
         
         index = 0;
         cpufreq_frequency_table_target(pcpu->policy, pcpu->freq_table, val,
-                CPUFREQ_RELATION_L, &index);
+                CPUFREQ_RELATION_C, &index);
         val = pcpu->freq_table[index].frequency;
 
         if (val > pcpu->policy->max)
@@ -875,7 +875,7 @@ static int cpufreq_governor_ondemandplus(struct cpufreq_policy *policy,
                                         policy->max, CPUFREQ_RELATION_H);
                 else if (policy->min > policy->cur)
                         __cpufreq_driver_target(policy,
-                                        policy->min, CPUFREQ_RELATION_L);
+                                        policy->min, CPUFREQ_RELATION_C);
                 break;
         }
         return 0;

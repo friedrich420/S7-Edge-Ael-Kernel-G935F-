@@ -395,11 +395,11 @@ inline static void target_freq(struct cpufreq_policy *policy,
 			// to ramp up to *at least* current + ramp_up_step.
 			if (new_freq > old_freq && prefered_relation == CPUFREQ_RELATION_H
 					&& !cpufreq_frequency_table_target(policy, table, new_freq,
-							CPUFREQ_RELATION_L, &index))
+							CPUFREQ_RELATION_C, &index))
 				target = table[index].frequency;
 			// simlarly for ramping down:
 			else if (new_freq < old_freq
-					&& prefered_relation == CPUFREQ_RELATION_L
+					&& prefered_relation == CPUFREQ_RELATION_C
 					&& !cpufreq_frequency_table_target(policy, table, new_freq,
 							CPUFREQ_RELATION_H, &index))
 				target = table[index].frequency;
@@ -428,7 +428,7 @@ static void cpufreq_smartmax_eps_freq_change(struct smartmax_eps_info_s *this_sm
 	unsigned int old_freq;
 	int ramp_dir;
 	struct cpufreq_policy *policy;
-	unsigned int relation = CPUFREQ_RELATION_L;
+	unsigned int relation = CPUFREQ_RELATION_C;
 
 	ramp_dir = this_smartmax_eps->ramp_dir;
 	old_freq = this_smartmax_eps->old_freq;
@@ -1324,7 +1324,7 @@ static int cpufreq_governor_smartmax_eps(struct cpufreq_policy *new_policy,
 		else if (this_smartmax_eps->cur_policy->cur < new_policy->min) {
 			dprintk(SMARTMAX_EPS_DEBUG_JUMPS,"CPUFREQ_GOV_LIMITS jumping to new min freq: %d\n",new_policy->min);
 			__cpufreq_driver_target(this_smartmax_eps->cur_policy,
-					new_policy->min, CPUFREQ_RELATION_L);
+					new_policy->min, CPUFREQ_RELATION_C);
 		}
 		mutex_unlock(&this_smartmax_eps->timer_mutex);
 		break;

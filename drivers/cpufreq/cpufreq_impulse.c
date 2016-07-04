@@ -286,7 +286,7 @@ static unsigned int choose_freq(struct cpufreq_impulse_cpuinfo *pcpu,
 
 		if (cpufreq_frequency_table_target(
 			    pcpu->policy, pcpu->freq_table, loadadjfreq / tl,
-			    CPUFREQ_RELATION_L, &index))
+			    CPUFREQ_RELATION_C, &index))
 			break;
 		freq = pcpu->freq_table[index].frequency;
 
@@ -328,7 +328,7 @@ static unsigned int choose_freq(struct cpufreq_impulse_cpuinfo *pcpu,
 				 */
 				if (cpufreq_frequency_table_target(
 					    pcpu->policy, pcpu->freq_table,
-					    freqmin + 1, CPUFREQ_RELATION_L,
+					    freqmin + 1, CPUFREQ_RELATION_C,
 					    &index))
 					break;
 				freq = pcpu->freq_table[index].frequency;
@@ -451,7 +451,7 @@ static void cpufreq_impulse_timer(unsigned long data)
 	pcpu->local_hvtime = now;
 
 	if (cpufreq_frequency_table_target(pcpu->policy, pcpu->freq_table,
-					   new_freq, CPUFREQ_RELATION_L,
+					   new_freq, CPUFREQ_RELATION_C,
 					   &index)) {
 		spin_unlock_irqrestore(&pcpu->target_freq_lock, flags);
 		goto rearm;
@@ -598,7 +598,7 @@ static int cpufreq_impulse_speedchange_task(void *data)
 				if (tunables->powersave_bias || suspended)
 					__cpufreq_driver_target(pcpu->policy,
 								max_freq,
-								CPUFREQ_RELATION_L);
+								CPUFREQ_RELATION_C);
 				else
 					__cpufreq_driver_target(pcpu->policy,
 								max_freq,
@@ -1432,7 +1432,7 @@ static int cpufreq_governor_impulse(struct cpufreq_policy *policy,
 					policy->max, CPUFREQ_RELATION_H);
 		else if (policy->min > policy->cur)
 			__cpufreq_driver_target(policy,
-					policy->min, CPUFREQ_RELATION_L);
+					policy->min, CPUFREQ_RELATION_C);
 		for_each_cpu(j, policy->cpus) {
 			pcpu = &per_cpu(cpuinfo, j);
 

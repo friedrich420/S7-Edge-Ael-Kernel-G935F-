@@ -562,7 +562,7 @@ static void __cpuinit interactivex_suspend(int suspend)
 		  smp_rmb();
 		  if (!pcpu->governor_enabled)
 		    continue;
-		  __cpufreq_driver_target(pcpu->policy, hispeed_freq, CPUFREQ_RELATION_L);
+		  __cpufreq_driver_target(pcpu->policy, hispeed_freq, CPUFREQ_RELATION_C);
 		}
 		mutex_unlock(&set_speed_lock);
                 pr_info("[imoseyon] interactivex awake cpu1 up\n");
@@ -676,7 +676,7 @@ static int cpufreq_governor_interactivex(struct cpufreq_policy *policy,
 					policy->max, CPUFREQ_RELATION_H);
 		else if (policy->min > policy->cur)
 			__cpufreq_driver_target(policy,
-					policy->min, CPUFREQ_RELATION_L);
+					policy->min, CPUFREQ_RELATION_C);
 		break;
 	}
 	return 0;
