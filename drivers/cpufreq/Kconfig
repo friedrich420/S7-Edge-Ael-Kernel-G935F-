@@ -429,6 +429,12 @@ config CPU_FREQ_DEFAULT_GOV_SAMSUNG
 	help
 	  Use the CPUFreq governor 'lulzactivew' as default.
 
+config CPU_FREQ_DEFAULT_GOV_IRONACTIVE
+  	bool "ironactive"
+  	select CPU_FREQ_GOV_IRONACTIVE
+  	help
+  	  Use the CPUFreq governor 'ironactive' as default. This cpugovernor
+
 endchoice
 
 config CPU_FREQ_GOV_PERFORMANCE
@@ -845,6 +851,18 @@ config CPU_FREQ_GOV_LULZACTIVEW
 config CPU_FREQ_GOV_SAMSUNG
 	tristate "'samsung' cpufreq governor"
 	depends on CPU_FREQ
+
+config CPU_FREQ_GOV_IRONACTIVE
+  	tristate "'ironactive' cpufreq policy governor"
+  	help
+  	  'ironactive' - This driver adds a dynamic cpufreq policy governor
+  
+  	  This governor attempts to reduce the latency of clock
+  	  increases so that the system is more responsive to
+	  interactive workloads.
+	  For details, take a look at linux/Documentation/cpu-freq.
+  
+  	  If in doubt, say N.
 
 
 config MODE_AUTO_CHANGE
