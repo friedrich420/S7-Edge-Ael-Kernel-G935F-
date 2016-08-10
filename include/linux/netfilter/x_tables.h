@@ -239,6 +239,10 @@ void xt_unregister_match(struct xt_match *target);
 int xt_register_matches(struct xt_match *match, unsigned int n);
 void xt_unregister_matches(struct xt_match *match, unsigned int n);
 
+unsigned int *xt_alloc_entry_offsets(unsigned int size);
+bool xt_find_jump_offset(const unsigned int *offsets,
+			 unsigned int target, unsigned int size);
+
 int xt_check_match(struct xt_mtchk_param *, unsigned int size, u_int8_t proto,
 		   bool inv_proto);
 int xt_check_target(struct xt_tgchk_param *, unsigned int size, u_int8_t proto,
