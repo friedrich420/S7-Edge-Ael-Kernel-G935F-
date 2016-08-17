@@ -294,7 +294,7 @@ static ssize_t set_volt_table(struct device *dev, struct device_attribute *attr,
 		}
 	}
 
-	ipa_update();
+	//ipa_update();
 	spin_unlock_irqrestore(&platform->gpu_dvfs_spinlock, flags);
 
 	return count;
@@ -543,6 +543,9 @@ static ssize_t set_gpu_custom_max_clock(struct device *dev, struct device_attrib
 	}
 
 	platform->gpu_max_clock = gpu_max_clock;
+	platform->user_max_lock_input = 0;
+	gpu_dvfs_clock_lock(GPU_DVFS_MAX_UNLOCK, SYSFS_LOCK, 0);
+
 
 	return count;
 }
@@ -702,6 +705,8 @@ static ssize_t set_max_lock_dvfs(struct device *dev, struct device_attribute *at
 			GPU_LOG(DVFS_WARNING, DUMMY, 0u, 0u, "%s: invalid value\n", __func__);
 			return -ENOENT;
 		}
+
+			clock = platform->gpu_max_clock;
 
 		platform->user_max_lock_input = clock;
 
@@ -1756,7 +1761,7 @@ int gpu_create_sysfs_file(struct device *dev)
 	if (device_create_file(dev, &dev_attr_min_clock)) {
 		GPU_LOG(DVFS_ERROR, DUMMY, 0u, 0u, "couldn't create sysfs file [min_clock]\n");
 		goto out;
-	}
+	}	
 
 	if (device_create_file(dev, &dev_attr_tmu)) {
 		GPU_LOG(DVFS_ERROR, DUMMY, 0u, 0u, "couldn't create sysfs file [tmu]\n");
