@@ -29,10 +29,8 @@ enum asv_group {
 	asv_max_lv,
 	dvfs_freq,
 	dvfs_voltage,
-	dvfs_rcc,
 	dvfs_group,
 	table_group,
-	ids_group,
 	num_of_asc,
 };
 
