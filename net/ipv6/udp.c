@@ -427,11 +427,7 @@ try_again:
 		err = skb_copy_datagram_iovec(skb, sizeof(struct udphdr),
 					      msg->msg_iov, copied);
 	else {
-<<<<<<< HEAD
-		err = skb_copy_and_csum_datagram_iovec(skb, sizeof(struct udphdr), msg->msg_iov);
-=======
 		err = skb_copy_and_csum_datagram_msg(skb, sizeof(struct udphdr), msg, copied);
->>>>>>> f6e2607... BPH6 source code release!
 		if (err == -EINVAL)
 			goto csum_copy_err;
 	}

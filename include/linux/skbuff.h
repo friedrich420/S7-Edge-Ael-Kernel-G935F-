@@ -2653,16 +2653,13 @@ unsigned int datagram_poll(struct file *file, struct socket *sock,
 int skb_copy_datagram_iovec(const struct sk_buff *from, int offset,
 			    struct iovec *to, int size);
 int skb_copy_and_csum_datagram_iovec(struct sk_buff *skb, int hlen,
-<<<<<<< HEAD
-				     struct iovec *iov);
-=======
 				     struct iovec *iov, int len);
 static inline int skb_copy_and_csum_datagram_msg(struct sk_buff *skb, int hlen,
 			    struct msghdr *msg, int len)
 {
 	return skb_copy_and_csum_datagram_iovec(skb, hlen, msg->msg_iov, len);
 }
->>>>>>> f6e2607... BPH6 source code release!
+
 int skb_copy_datagram_from_iovec(struct sk_buff *skb, int offset,
 				 const struct iovec *from, int from_offset,
 				 int len);

@@ -243,26 +243,15 @@ static void __init alloc_init_pte(pmd_t *pmd, unsigned long addr,
 	if(pmd_block(*pmd))
 		return block_to_pages(pmd, addr, end, pfn);
 #endif
-<<<<<<< HEAD
 	if (pmd_none(*pmd)) {
-		pte = early_alloc(PTRS_PER_PTE * sizeof(pte_t));
-=======
-	if (pmd_none(*pmd) || pmd_bad(*pmd)) {
 #ifdef CONFIG_SENTINEL
 		pte = sentinel_early_alloc(PTRS_PER_PTE * sizeof(pte_t), addr);
 #else
-		pte = alloc(PTRS_PER_PTE * sizeof(pte_t));
+		pte = early_alloc(PTRS_PER_PTE * sizeof(pte_t));
 #endif
-		if (pmd_sect(*pmd))
-			split_pmd(pmd, pte);
->>>>>>> f6e2607... BPH6 source code release!
 		__pmd_populate(pmd, __pa(pte), PMD_TYPE_TABLE);
 	}
-<<<<<<< HEAD
-#ifndef CONFIG_TIMA_RKP
-=======
 #if !defined(CONFIG_TIMA_RKP) && !defined(CONFIG_SENTINEL)
->>>>>>> f6e2607... BPH6 source code release!
 	BUG_ON(pmd_bad(*pmd));
 #endif
 
@@ -304,27 +293,13 @@ static void __init alloc_init_pmd(pud_t *pud, unsigned long addr,
 		pmd = rkp_ro_alloc();
 #endif
 #else	/* !CONFIG_TIMA_RKP */
-<<<<<<< HEAD
-		pmd = early_alloc(PTRS_PER_PMD * sizeof(pmd_t));
-#endif
-		pud_populate(&init_mm, pud, pmd);
-=======
 #ifdef CONFIG_SENTINEL
 		pmd = sentinel_early_alloc(PTRS_PER_PMD * sizeof(pmd_t), addr);
 #else
-		pmd = alloc(PTRS_PER_PMD * sizeof(pmd_t));
+		pmd = early_alloc(PTRS_PER_PMD * sizeof(pmd_t));
 #endif
 #endif
-		if (pud_sect(*pud)) {
-			/*
-			 * need to have the 1G of mappings continue to be
-			 * present
-			 */
-			split_pud(pud, pmd);
-		}
-		pud_populate(mm, pud, pmd);
-		flush_tlb_all();
->>>>>>> f6e2607... BPH6 source code release!
+		pud_populate(&init_mm, pud, pmd);
 	}
 
 	pmd = pmd_offset(pud, addr);
@@ -513,12 +488,6 @@ static void __init map_mem(void)
 		do_memset = 1;
 	}
 	else {
-<<<<<<< HEAD
-		create_mapping(start, __phys_to_virt(start), end - start);
-	}
-#else /* !CONFIG_TIMA_RKP */
-		create_mapping(start, __phys_to_virt(start), end - start);
-=======
 #ifdef CONFIG_SENTINEL
 		create_mapping(start, __phys_to_virt(start), SENTINEL_MEMBLOCK_SIZE);
 		while (start < end) {
@@ -526,7 +495,7 @@ static void __init map_mem(void)
 			start += PAGE_SIZE;
 		}
 #else
-		__map_memblock(start, end);
+		create_mapping(start, __phys_to_virt(start), end - start);
 #endif
 	}
 #else /* !CONFIG_TIMA_RKP */
@@ -537,8 +506,7 @@ static void __init map_mem(void)
 			start += PAGE_SIZE;
 		}
 #else
-		__map_memblock(start, end);
->>>>>>> f6e2607... BPH6 source code release!
+		create_mapping(start, __phys_to_virt(start), end - start);
 #endif
 #endif
 	}

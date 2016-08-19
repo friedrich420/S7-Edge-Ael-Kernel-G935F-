@@ -5,19 +5,19 @@
  * Path defines for all the sysfs files.
  * *********************************************************************
  * */
-/*#define  	GPU_MIN_CLOCK		"/sys/devices/14ac0000.mali/" -- Not available directly from sysfs. */
-/*#define  	GPU_MAX_CLOCK		"/sys/devices/14ac0000.mali/" -- Not available directly from sysfs. */
-#define  	GPU_BUSY			"/sys/devices/14ac0000.mali/utilization"
-#define  	GPU_VOL				"/sys/devices/14ac0000.mali/vol"
-#define  	GPU_FREQ			"/sys/devices/14ac0000.mali/clock"
-#define  	GPU_FREQ_TABLE		"/sys/devices/14ac0000.mali/dvfs_table"
-#define  	GPU_GOVERNOR		"/sys/devices/14ac0000.mali/power_policy"
-#define  	GPU_CORES_CONFIG	"/sys/devices/14ac0000.mali/core_mask"
-#define  	GPU_TMU				"/sys/devices/14ac0000.mali/tmu"
-#define  	GPU_MODEL			"/sys/devices/14ac0000.mali/uevent"
-/*#define  	GPU_VERSION			"/sys/devices/14ac0000.mali/gpu_version"*/
-/*#define  	GPU_MEM				"/sys/devices/14ac0000.mali/gpu_mem" -- Not available directly from sysfs. */
-#define  	GPU_DVFS			"/sys/devices/14ac0000.mali/dvfs"
+/*#define  	GPU_MIN_CLOCK		"/sys/devices/11800000.mali/" -- Not available directly from sysfs. */
+/*#define  	GPU_MAX_CLOCK		"/sys/devices/11800000.mali/" -- Not available directly from sysfs. */
+#define  	GPU_BUSY			"/sys/devices/11800000.mali/utilization"
+#define  	GPU_VOL				"/sys/devices/11800000.mali/vol"
+#define  	GPU_FREQ			"/sys/devices/11800000.mali/clock"
+#define  	GPU_FREQ_TABLE		"/sys/devices/11800000.mali/dvfs_table"
+#define  	GPU_GOVERNOR		"/sys/devices/11800000.mali/power_policy"
+#define  	GPU_CORES_CONFIG	"/sys/devices/11800000.mali/core_mask"
+#define  	GPU_TMU				"/sys/devices/11800000.mali/tmu"
+#define  	GPU_MODEL			"/sys/devices/11800000.mali/uevent"
+/*#define  	GPU_VERSION			"/sys/devices/11800000.mali/gpu_version"*/
+/*#define  	GPU_MEM				"/sys/devices/11800000.mali/gpu_mem" -- Not available directly from sysfs. */
+#define  	GPU_DVFS			"/sys/devices/11800000.mali/dvfs"
 #define  	EXYNOS_SYSFS_GPU_FPS	"/sys/devices/platform/gpusysfs/fps"
 
 /* *
