@@ -43,8 +43,6 @@
 		br_ratio_r_sv = <170>;
 		br_ratio_g_sv = <60>;
 		br_ratio_b_sv = <360>;
-<<<<<<< HEAD
-=======
 
 		normal_powermode_current_pg = <10>;
 		low_powermode_current_pg = <2>;
@@ -57,6 +55,5 @@
 		br_ratio_r_bp = <160>;
 		br_ratio_g_bp = <60>;
 		br_ratio_b_bp = <400>;
->>>>>>> f6e2607... BPH6 source code release!
 	};
 };
