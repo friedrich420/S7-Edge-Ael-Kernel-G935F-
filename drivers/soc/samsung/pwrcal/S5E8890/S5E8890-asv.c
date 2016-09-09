@@ -557,23 +557,8 @@ static int dvfsbig_get_asv_table(unsigned int *table)
 
 	max_lv = asv_dvfs_big->table->num_of_lv;
 
-<<<<<<< HEAD
 	for (lv = 0; lv < max_lv; lv++)
 		table[lv] = get_asv_voltage(cal_asv_dvfs_big, lv);
-=======
-	for (lv = 0; lv < max_lv; lv++) {
-		table[lv] = get_asv_voltage(cal_asv_dvfs_big, lv) - (asv_vol_step * arg_vdd_uv);
-		if (lv > 18) {
-                	if (table[lv-1] - (asv_vol_step * 2) > 550000)
-				table[lv] = table[lv-1] - (asv_vol_step * 2);
-			else
-				table[lv] = 550000;
-		}
-	}
-
-	for (lv = 2; lv >= 0; lv--)
-		table[lv] = table[lv+1] + (asv_vol_step * 10);
->>>>>>> 910109b... up to date thermal control
 
 	return max_lv;
 }
@@ -584,23 +569,8 @@ static int dvfslittle_get_asv_table(unsigned int *table)
 
 	max_lv = asv_dvfs_little->table->num_of_lv;
 
-<<<<<<< HEAD
 	for (lv = 0; lv < max_lv; lv++)
 		table[lv] = get_asv_voltage(cal_asv_dvfs_little, lv);
-=======
-	for (lv = 0; lv < max_lv; lv++) {
-		table[lv] = get_asv_voltage(cal_asv_dvfs_little, lv) - (asv_vol_step * arg_vdd_uv);
-		if (lv > 14) {
-                	if (table[lv-1] - (asv_vol_step * 2) > 550000)
-				table[lv] = table[lv-1] - (asv_vol_step * 2);
-			else
-				table[lv] = 550000;
-		}
-	}
-
-	for (lv = 3; lv >= 0; lv--)
-		table[lv] = table[lv+1] + (asv_vol_step * 10);
->>>>>>> 910109b... up to date thermal control
 
 	return max_lv;
 }
@@ -611,25 +581,8 @@ static int dvfsg3d_get_asv_table(unsigned int *table)
 
 	max_lv = asv_dvfs_g3d->table->num_of_lv;
 
-<<<<<<< HEAD
 	for (lv = 0; lv < max_lv; lv++)
 		table[lv] = get_asv_voltage(cal_asv_dvfs_g3d, lv);
-=======
-	for (lv = 0; lv < max_lv; lv++) {
-		table[lv] = get_asv_voltage(cal_asv_dvfs_g3d, lv) - (asv_vol_step * arg_vdd_uv);
-		if (lv > 8) {
-			if (table[lv-1] - (asv_vol_step * 2) > 550000)
-	        		table[lv] = table[lv-1] - (asv_vol_step * 4);
-			else
-	        		table[lv] = 550000;
-		}
-	}
-
-	if (table[1] + (asv_vol_step * 8) < 850000)
-	        table[0] = table[1] + (asv_vol_step * 8);
-	else
-	        table[0] = 850000;
->>>>>>> 910109b... up to date thermal control
 
 	return max_lv;
 }
@@ -641,11 +594,7 @@ static int dvfsmif_get_asv_table(unsigned int *table)
 	max_lv = asv_dvfs_mif->table->num_of_lv;
 
 	for (lv = 0; lv < max_lv; lv++)
-<<<<<<< HEAD
 		table[lv] = get_asv_voltage(cal_asv_dvfs_mif, lv);
-=======
-		table[lv] = get_asv_voltage(cal_asv_dvfs_mif, lv) - (asv_vol_step * arg_vdd_uv);
->>>>>>> 910109b... up to date thermal control
 
 	return max_lv;
 }
@@ -657,11 +606,7 @@ static int dvfsint_get_asv_table(unsigned int *table)
 	max_lv = asv_dvfs_int->table->num_of_lv;
 
 	for (lv = 0; lv < max_lv; lv++)
-<<<<<<< HEAD
 		table[lv] = get_asv_voltage(cal_asv_dvfs_int, lv);
-=======
-		table[lv] = get_asv_voltage(cal_asv_dvfs_int, lv) - (asv_vol_step * arg_vdd_uv);
->>>>>>> 910109b... up to date thermal control
 
 	return max_lv;
 }
@@ -673,11 +618,7 @@ static int dvfscam_get_asv_table(unsigned int *table)
 	max_lv = asv_dvfs_cam->table->num_of_lv;
 
 	for (lv = 0; lv < max_lv; lv++)
-<<<<<<< HEAD
 		table[lv] = get_asv_voltage(cal_asv_dvfs_cam, lv);
-=======
-		table[lv] = get_asv_voltage(cal_asv_dvfs_cam, lv) - (asv_vol_step * arg_vdd_uv);
->>>>>>> 910109b... up to date thermal control
 
 	return max_lv;
 }
@@ -689,11 +630,7 @@ static int dvfsdisp_get_asv_table(unsigned int *table)
 	max_lv = asv_dvfs_disp->table->num_of_lv;
 
 	for (lv = 0; lv < max_lv; lv++)
-<<<<<<< HEAD
 		table[lv] = get_asv_voltage(cal_asv_dvfs_disp, lv);
-=======
-		table[lv] = get_asv_voltage(cal_asv_dvfs_disp, lv) - (asv_vol_step * arg_vdd_uv);
->>>>>>> 910109b... up to date thermal control
 
 	return max_lv;
 }
@@ -705,11 +642,7 @@ static int dvsg3dm_get_asv_table(unsigned int *table)
 	max_lv = asv_dvs_g3dm->table->num_of_lv;
 
 	for (lv = 0; lv < max_lv; lv++)
-<<<<<<< HEAD
 		table[lv] = get_asv_voltage(cal_asv_dvs_g3dm, lv);
-=======
-		table[lv] = get_asv_voltage(cal_asv_dvs_g3dm, lv) - (asv_vol_step * arg_vdd_uv);
->>>>>>> 910109b... up to date thermal control
 
 	return max_lv;
 }

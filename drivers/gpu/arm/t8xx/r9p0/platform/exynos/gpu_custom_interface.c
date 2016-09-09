@@ -294,7 +294,6 @@ static ssize_t set_volt_table(struct device *dev, struct device_attribute *attr,
 		}
 	}
 
-	ipa_update();
 	spin_unlock_irqrestore(&platform->gpu_dvfs_spinlock, flags);
 
 	return count;
@@ -933,11 +932,6 @@ static ssize_t set_max_lock_dvfs(struct device *dev, struct device_attribute *at
 			return -ENOENT;
 		}
 
-<<<<<<< HEAD
-=======
-			clock = platform->gpu_max_clock;
-
->>>>>>> 910109b... up to date thermal control
 		platform->user_max_lock_input = clock;
 
 		clock = gpu_dvfs_get_level_clock(clock);

@@ -1262,9 +1262,7 @@ static int exynos_tmu_ect_set_information(struct platform_device *pdev)
 
 		if (function->range_list[i].max_frequency == 2704000)
 			function->range_list[i].max_frequency = -1;
-		if (function->range_list[i].max_frequency == 1586000)
-			function->range_list[i].max_frequency = -1;
-		if (function->range_list[i].max_frequency == 650000)
+  		if (function->range_list[i].max_frequency == 1586000)
 			function->range_list[i].max_frequency = -1;
 
 		pdata->freq_tab[i].temp_level = function->range_list[i].lower_bound_temperature;
@@ -1428,10 +1426,7 @@ static int exynos_tmu_probe(struct platform_device *pdev)
 	/* Register the sensor with thermal management interface */
 	ret = exynos_register_thermal(sensor_conf);
 	if (ret) {
-		if (ret != -EPROBE_DEFER)
-			dev_err(&pdev->dev,
-				"Failed to register thermal interface: %d\n",
-				ret);
+		dev_err(&pdev->dev, "Failed to register thermal interface\n");
 		goto err;
 	}
 	data->reg_conf = sensor_conf;
