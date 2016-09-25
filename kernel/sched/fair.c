@@ -2342,13 +2342,13 @@ struct hmp_global_attr {
 
 #ifdef CONFIG_HMP_FREQUENCY_INVARIANT_SCALE
 #ifdef CONFIG_SCHED_HMP_DOWN_MIGRATION_COMPENSATION
-#define HMP_DATA_SYSFS_MAX 26
+#define HMP_DATA_SYSFS_MAX 27
 #else
 #define HMP_DATA_SYSFS_MAX 21
 #endif
 #else
 #ifdef CONFIG_SCHED_HMP_DOWN_MIGRATION_COMPENSATION
-#define HMP_DATA_SYSFS_MAX 25
+#define HMP_DATA_SYSFS_MAX 26
 #else
 #define HMP_DATA_SYSFS_MAX 20
 #endif
@@ -2728,8 +2728,8 @@ static inline void update_rq_runnable_avg(struct rq *rq, int runnable) {}
  * tweaking suit particular needs.
  */
 
-static unsigned int hmp_up_threshold = 700;
-static unsigned int hmp_down_threshold = 256;
+static unsigned int hmp_up_threshold = 524;
+static unsigned int hmp_down_threshold = 214;
 
 static unsigned int hmp_semiboost_up_threshold = 400;
 static unsigned int hmp_semiboost_down_threshold = 150;
@@ -2925,7 +2925,13 @@ static inline void enqueue_entity_load_avg(struct cfs_rq *cfs_rq,
 		}
 		wakeup = 0;
 	} else {
-		__synchronize_entity_decay(se);
+		/*
+		 * Task re-woke on same cpu (or else migrate_task_rq_fair()
+		 * would have made count negative); we must be careful to avoid
+		 * double-accounting blocked time after synchronizing decays.
+		 */
+		se->avg.last_runnable_update += __synchronize_entity_decay(se)
+							<< 20;
 	}
 
 	/* migrated tasks did not contribute to our blocked load */
