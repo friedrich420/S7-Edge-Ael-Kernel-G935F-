@@ -399,6 +399,8 @@ __internal_add_timer(struct tvec_base *base, struct timer_list *timer)
 
 static void internal_add_timer(struct tvec_base *base, struct timer_list *timer)
 {
+	int leftmost = 0;
+
 	(void)catchup_timer_jiffies(base);
 	__internal_add_timer(base, timer);
 	/*
@@ -406,10 +408,12 @@ static void internal_add_timer(struct tvec_base *base, struct timer_list *timer)
 	 */
 	if (!tbase_get_deferrable(timer->base)) {
 		if (!base->active_timers++ ||
-		    time_before(timer->expires, base->next_timer))
-			base->next_timer = timer->expires;
-	}
-	base->all_timers++;
+		    time_before(timer->expires, base->next_timer)) {
+  			base->next_timer = timer->expires;
+			leftmost = 1;
+		}
+  	}
+  	base->all_timers++;
 
 	/*
 	 * Check whether the other CPU is in dynticks mode and needs
@@ -424,7 +428,7 @@ static void internal_add_timer(struct tvec_base *base, struct timer_list *timer)
 	 * require special care against races with idle_cpu(), lets deal
 	 * with that later.
 	 */
-	if (!tbase_get_deferrable(base) || tick_nohz_full_cpu(base->cpu))
+	if (leftmost || tick_nohz_full_cpu(base->cpu))
 		wake_up_nohz_cpu(base->cpu);
 }
 
