@@ -764,6 +764,8 @@ TRACE_EVENT(sched_hmp_migrate_compensation,
 			__entry->dest, __entry->force, __entry->load)
 );
 
+
+
 TRACE_EVENT(sched_hmp_offload_abort,
 
 	TP_PROTO(int cpu, int data, char *label),
