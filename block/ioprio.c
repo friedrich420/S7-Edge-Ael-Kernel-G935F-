@@ -156,7 +156,6 @@ static int get_task_ioprio(struct task_struct *p)
 out:
 	return ret;
 }
-
 int ioprio_best(unsigned short aprio, unsigned short bprio)
 {
 	unsigned short aclass;
