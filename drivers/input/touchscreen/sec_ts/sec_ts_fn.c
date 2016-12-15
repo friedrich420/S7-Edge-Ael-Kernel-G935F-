@@ -317,6 +317,11 @@ static ssize_t cmd_store(struct device *dev, struct device_attribute *attr,
 		printk(KERN_ERR "%s: No platform data found\n", __func__);
 		return -EINVAL;
 	}
+	
+	if (strlen(buf) >= CMD_STR_LEN) {		
+		tsp_debug_err(true, &ts->client->dev, "%s: cmd length is over (%s,%d)!!\n", __func__, buf, (int)strlen(buf));
+		return -EINVAL;
+	}
 
 #if 1
 	if (ts->cmd_is_running == true) {
